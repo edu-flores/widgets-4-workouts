@@ -1,0 +1,17 @@
+$primary: #fba300;
+$bg: #fffdfc;
+$darker: #4e4a55;
+$dark: #75727b;
+$lighter: #e9e8eb;
+$light: #d9d9d9;
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: $bg;
+  color: $dark;
+  font-family: "Inter";
+  margin: 0;
+}

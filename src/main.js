@@ -3,6 +3,6 @@ import App from './App.vue';
 import 'bootstrap/dist/css/bootstrap.css';
 import bootstrap from 'bootstrap/dist/js/bootstrap.bundle';
 
-import './assets/main.css';
+import './assets/main.scss';
 
 createApp(App).use(bootstrap).mount('#app');
