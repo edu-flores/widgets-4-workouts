@@ -1,11 +1,16 @@
 <script setup>
-
+import Header from './components/Header.vue';
 </script>
 
 <template>
-  <h1>Hello World!</h1>
+  <div id="main-container">
+    <Header />
+  </div>
 </template>
 
-<style scoped>
-
+<style lang="scss" scoped>
+#main-container {
+  max-width: 80rem;
+  margin: auto;
+}
 </style>
