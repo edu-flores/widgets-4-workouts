@@ -6,18 +6,18 @@ import HelpIcon from './icons/IconHelp.vue';
 
 <template>
   <footer class="container-fluid">
-    <div class="row align-items-center">
+    <div class="row align-items-center py-4 py-sm-2 px-4 gy-3 gy-sm-0">
       <div class="col-6 text-end">
         <ResetIcon class="me-2 mb-1" />
         <span>Reset</span>
       </div>
-      <div class="col-6">
+      <div class="col-6 col-sm-4">
         <span>Export</span>
         <ExportIcon class="ms-2 mb-1" />
       </div>
-      <!-- <div id="footer--help">
+      <div class="col-12 col-sm-2 text-center text-sm-end">
         <HelpIcon />
-      </div> -->
+      </div>
     </div>
   </footer>
 </template>
@@ -36,10 +36,5 @@ footer {
   .row {
     min-height: inherit;
   }
-}
-
-#footer--help {
-  position: absolute;
-  right: 0;
 }
 </style>
