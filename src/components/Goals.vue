@@ -1,0 +1,3 @@
+<template>
+  Goals
+</template>

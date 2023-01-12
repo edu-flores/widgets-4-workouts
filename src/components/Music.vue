@@ -1,0 +1,3 @@
+<template>
+  Music
+</template>
