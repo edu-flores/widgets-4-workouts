@@ -16,10 +16,10 @@ import Footer from './components/Footer.vue';
     <Header />
     <main class="container-fluid">
       <div class="row">
-        <div class="col-12 col-lg-8">
+        <div class="col-12 col-md-8">
           <Stadistics />
         </div>
-        <div class="col-12 col-lg-4">
+        <div class="col-12 col-md-4">
           <PlateCalculator />
         </div>
         <div class="col-12 col-lg-4">
@@ -27,10 +27,10 @@ import Footer from './components/Footer.vue';
             <div class="col-12 col-md-6 col-lg-12">
               <Music />
             </div>
-            <div class="col-12 col-md-3 col-lg-6">
+            <div class="col-12 col-sm-6 col-md-3 col-lg-6">
               <WarmupDropset />
             </div>
-            <div class="col-12 col-md-3 col-lg-6">
+            <div class="col-12 col-sm-6 col-md-3 col-lg-6">
               <Timer />
             </div>
           </div>
