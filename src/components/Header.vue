@@ -5,18 +5,20 @@ import MoonIcon from './icons/IconMoon.vue';
 </script>
 
 <template>
-  <header>
-    <div>
-      <ScaleIcon />
-      <span>75.2 kg</span>
-    </div>
-    <div>
-      <CalendarIcon />
-      <span><b>Monday</b>: January 9, 2023</span>
-    </div>
-    <div>
-      <span>Light</span>
-      <MoonIcon />
+  <header class="container-fluid">
+    <div class="row align-items-center py-4 py-md-2 px-4 gy-3 gy-md-0">
+      <div class="order-2 col-6 col-md-3 text-start">
+        <ScaleIcon class="me-2 mb-1" />
+        <span>75.2 kg</span>
+      </div>
+      <div class="order-1 order-md-2 col-12 col-md-6 text-center">
+        <CalendarIcon class="me-2 mb-1" />
+        <span><b>Monday</b>: January 9, 2023</span>
+      </div>
+      <div class="order-3 col-6 col-md-3 text-end">
+        <span>Light</span>
+        <MoonIcon class="ms-2 mb-1" />
+      </div>
     </div>
   </header>
 </template>
@@ -29,16 +31,11 @@ header {
   border: 1px solid $lighter;
   border-radius: 6px;
   width: 100%;
-  height: 4rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 2rem;
+  min-height: 4rem;
   box-shadow: rgba(33, 35, 38, 0.1) 0px 10px 10px -10px;
 
-  div {
-    display: flex;
-    gap: 1rem;
+  .row {
+    min-height: inherit;
   }
 }
 </style>
