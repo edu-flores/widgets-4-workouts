@@ -15,5 +15,9 @@ svg {
   &:hover {
     cursor: pointer;
   }
+
+  &:active {
+    filter: brightness(2);
+  }
 }
 </style>
