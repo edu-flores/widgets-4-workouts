@@ -14,35 +14,51 @@ import Footer from './components/Footer.vue';
 <template>
   <div id="main-container">
     <Header />
-    <main class="container-fluid">
-      <div class="row">
+    <main class="container-fluid py-4 px-0">
+      <div class="row gy-4">
         <div class="col-12 col-md-8">
-          <Stadistics />
+          <div class="widget">
+            <Stadistics />
+          </div>
         </div>
         <div class="col-12 col-md-4">
-          <PlateCalculator />
+          <div class="widget">
+            <PlateCalculator />
+          </div>
         </div>
         <div class="col-12 col-lg-4">
-          <div class="row">
+          <div class="row gy-4">
             <div class="col-12 col-md-6 col-lg-12">
-              <Music />
+              <div class="widget">
+                <Music />
+              </div>
             </div>
             <div class="col-12 col-sm-6 col-md-3 col-lg-6">
-              <WarmupDropset />
+              <div class="widget">
+                <WarmupDropset />
+              </div>
             </div>
             <div class="col-12 col-sm-6 col-md-3 col-lg-6">
-              <Timer />
+              <div class="widget">
+                <Timer />
+              </div>
             </div>
           </div>
         </div>
         <div class="col-12 col-lg-8">
-          <Log />
+          <div class="widget">
+            <Log />
+          </div>
         </div>
         <div class="col-12 col-lg-8">
-          <Analysis />
+          <div class="widget">
+            <Analysis />
+          </div>
         </div>
         <div class="col-12 col-lg-4">
-          <Goals />
+          <div class="widget">
+            <Goals />
+          </div>
         </div>
       </div>
     </main>
@@ -51,13 +67,18 @@ import Footer from './components/Footer.vue';
 </template>
 
 <style lang="scss" scoped>
+@import './assets/main.scss';
+
 #main-container {
   max-width: 80rem;
   margin: auto;
 }
 
-main * {
-  border: 1px solid green;
-  padding: 1.5rem;
+.widget {
+  background-color: white;
+  border: 1px solid $lighter;
+  border-radius: 6px;
+  padding: 1.5rem 2rem;
+  box-shadow: rgba(33, 35, 38, 0.1) 0px 10px 10px -10px;
 }
 </style>
