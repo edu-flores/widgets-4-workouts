@@ -12,7 +12,7 @@ import StopIcon from '../icons/IconStop.vue';
     </div>
     <p><b>02:36</b></p>
     <progress class="w-100" value="62" max="100"></progress>
-    <div class="timer--icons d-flex mt-2">
+    <div class="icons d-flex mt-2">
       <PauseIcon />
       <StopIcon />
     </div>
@@ -33,24 +33,7 @@ p {
   margin-bottom: -0.5rem;
 }
 
-progress {
-  border-radius: 10px;
-  height: 9px;
-}
-progress::-webkit-progress-bar {
-  background-color: $light;
-  border-radius: 10px;
-}
-progress::-webkit-progress-value {
-  background-color: $primary;
-  border-radius: 10px;
-}
-progress::-moz-progress-bar {
-  background-color: $primary;
-  border-radius: 10px;
-}
-
-.timer--icons {
+.icons {
   justify-content: center;
   gap: 1.2rem;
 }

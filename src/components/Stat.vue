@@ -24,7 +24,7 @@ const style = computed(() => `background-color: rgba(251, 163, 0, ${props.opacit
 
 <template>
   <div class="d-flex">
-    <div class="stat--icon d-flex me-3" :style="style">
+    <div class="icon d-flex me-3" :style="style">
       <component :is="icons[id]"></component>
     </div>
     <div>
@@ -37,7 +37,7 @@ const style = computed(() => `background-color: rgba(251, 163, 0, ${props.opacit
 <style lang="scss" scoped>
 @import '../assets/main.scss';
 
-.stat--icon {
+.icon {
   border-radius: 100%;
   width: 3rem;
   height: 3rem;

@@ -23,3 +23,20 @@ body {
   margin: 0;
   padding: 1rem 2rem;
 }
+
+progress {
+  border-radius: 10px;
+  height: 9px;
+}
+progress::-webkit-progress-bar {
+  background-color: $light;
+  border-radius: 10px;
+}
+progress::-webkit-progress-value {
+  background-color: $primary;
+  border-radius: 10px;
+}
+progress::-moz-progress-bar {
+  background-color: $primary;
+  border-radius: 10px;
+}
