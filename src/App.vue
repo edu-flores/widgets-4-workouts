@@ -29,7 +29,7 @@ import Footer from './components/Footer.vue';
         <div class="col-12 col-lg-4">
           <div class="row gy-4">
             <div class="col-12 col-md-6 col-lg-12">
-              <div class="widget">
+              <div class="custom-widget placeholder-glow">
                 <Music />
               </div>
             </div>
@@ -79,6 +79,14 @@ import Footer from './components/Footer.vue';
   border: 1px solid $lighter;
   border-radius: 6px;
   padding: 1.5rem 2rem;
+  box-shadow: rgba(33, 35, 38, 0.1) 0px 10px 10px -10px;
+}
+
+.custom-widget {
+  background-color: #282828;
+  border: 1px solid $lighter;
+  border-radius: 6px;
+  height: 152px;
   box-shadow: rgba(33, 35, 38, 0.1) 0px 10px 10px -10px;
 }
 </style>
