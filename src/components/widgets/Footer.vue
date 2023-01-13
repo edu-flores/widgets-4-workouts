@@ -32,9 +32,9 @@ footer {
   width: 100%;
   min-height: 4rem;
   box-shadow: rgba(33, 35, 38, 0.1) 0px 10px 10px -10px;
+}
 
-  .row {
-    min-height: inherit;
-  }
+.row {
+  min-height: inherit;
 }
 </style>
