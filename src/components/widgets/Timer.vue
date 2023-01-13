@@ -12,7 +12,7 @@ import StopIcon from '../icons/IconStop.vue';
     </div>
     <p><b>02:36</b></p>
     <progress class="w-100" value="62" max="100"></progress>
-    <div class="timer--icons d-flex mt-1">
+    <div class="timer--icons d-flex mt-2">
       <PauseIcon />
       <StopIcon />
     </div>
