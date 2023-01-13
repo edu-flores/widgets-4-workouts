@@ -1,7 +1,7 @@
 <script setup>
-import ResetIcon from './icons/IconReset.vue';
-import ExportIcon from './icons/IconExport.vue';
-import HelpIcon from './icons/IconHelp.vue';
+import ResetIcon from '../icons/IconReset.vue';
+import ExportIcon from '../icons/IconExport.vue';
+import HelpIcon from '../icons/IconHelp.vue';
 </script>
 
 <template>
@@ -23,7 +23,7 @@ import HelpIcon from './icons/IconHelp.vue';
 </template>
 
 <style lang="scss" scoped>
-@import '../assets/main.scss';
+@import '../../assets/main.scss';
 
 footer {
   background-color: white;

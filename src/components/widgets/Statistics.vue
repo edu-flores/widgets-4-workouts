@@ -1,5 +1,5 @@
 <script setup>
-import Stat from './Stat.vue';
+import Stat from '../Stat.vue';
 
 // Volume, reps, exercises and best 1RM badges style and data
 const stats = [

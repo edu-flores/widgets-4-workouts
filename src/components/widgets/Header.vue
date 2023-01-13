@@ -1,7 +1,7 @@
 <script setup>
-import ScaleIcon from './icons/IconScale.vue';
-import CalendarIcon from './icons/IconCalendar.vue';
-import MoonIcon from './icons/IconMoon.vue';
+import ScaleIcon from '../icons/IconScale.vue';
+import CalendarIcon from '../icons/IconCalendar.vue';
+import MoonIcon from '../icons/IconMoon.vue';
 </script>
 
 <template>
@@ -24,7 +24,7 @@ import MoonIcon from './icons/IconMoon.vue';
 </template>
 
 <style lang="scss" scoped>
-@import '../assets/main.scss';
+@import '../../assets/main.scss';
 
 header {
   background-color: white;
