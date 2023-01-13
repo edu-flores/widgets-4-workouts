@@ -5,6 +5,13 @@ $dark: #75727b;
 $lighter: #e9e8eb;
 $light: #d9d9d9;
 
+@mixin flexbox($direction, $align, $justify) {
+  display: flex;
+  flex-direction: $direction;
+  align-items: $align;
+  justify-content: $justify;
+}
+
 * {
   box-sizing: border-box;
 }

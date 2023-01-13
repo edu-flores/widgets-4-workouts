@@ -1,6 +1,6 @@
 <script setup>
 import Header from './components/Header.vue';
-import Stadistics from './components/Stadistics.vue';
+import Statistics from './components/Statistics.vue';
 import PlateCalculator from './components/PlateCalculator.vue';
 import Music from './components/Music.vue';
 import WarmupDropset from './components/WarmupDropset.vue';
@@ -18,7 +18,7 @@ import Footer from './components/Footer.vue';
       <div class="row gy-4">
         <div class="col-12 col-md-8">
           <div class="widget">
-            <Stadistics />
+            <Statistics />
           </div>
         </div>
         <div class="col-12 col-md-4">
