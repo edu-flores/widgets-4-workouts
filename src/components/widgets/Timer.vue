@@ -7,11 +7,14 @@ import StopIcon from '../icons/IconStop.vue';
 
 <template>
   <section class="text-center">
+    <!-- Menu -->
     <div class="menu text-end">
       <MenuIcon />
     </div>
+    <!-- Timer Countdown -->
     <p><b>02:36</b></p>
     <progress class="w-100" value="62" max="100"></progress>
+    <!-- Timer Controls -->
     <div class="icons d-flex mt-2">
       <PauseIcon />
       <StopIcon />

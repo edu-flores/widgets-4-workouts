@@ -1,3 +1,37 @@
+<script setup>
+import MenuIcon from '../icons/IconMenu.vue';
+</script>
+
 <template>
-  PlateCalc
+  <section>
+    <div class="menu text-end">
+      <MenuIcon />
+    </div>
+    <h6><b>Plate Calculator</b></h6>
+    <div class="container-fluis">
+      <div class="row">
+        <!-- Visual Representation -->
+        <div class="col-12 col-sm-6 col-md-12 col-lg-6">Barbell</div>
+        <!-- Text -->
+        <div class="col-12 col-sm-6 col-md-12 col-lg-6 text-center">
+          <p class="mb-0"><b>185 lbs</b></p>
+          <span>= 70 on each side</span>
+        </div>
+      </div>
+    </div>
+  </section>
 </template>
+
+<style lang="scss" scoped>
+@import '../../assets/main.scss';
+
+.menu {
+  margin-top: -1.5rem;
+  margin-right: -1rem;
+}
+
+p {
+  color: $darker;
+  font-size: 1.6rem;
+}
+</style>

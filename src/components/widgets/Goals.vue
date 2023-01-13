@@ -7,6 +7,7 @@ import PlusIcon from '../icons/IconPlus.vue';
     <div class="mb-4">
       <h6><b>Goals</b></h6>
     </div>
+    <!-- Progress Bars -->
     <div class="container-fluid">
       <div class="row">
         <div class="col-12 col-sm-6 col-lg-12">
@@ -25,6 +26,7 @@ import PlusIcon from '../icons/IconPlus.vue';
         </div>
       </div>
     </div>
+    <!-- Add New Goal Section -->
     <div class="add mt-3">
       <PlusIcon />
       <span>New Goal</span>
