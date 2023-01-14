@@ -1,5 +1,5 @@
 <script setup>
-import Header from './components/widgets/Header.vue';
+import Header from './components/Header.vue';
 import Statistics from './components/widgets/Statistics.vue';
 import PlateCalculator from './components/widgets/PlateCalculator.vue';
 import Music from './components/widgets/Music.vue';
@@ -8,7 +8,7 @@ import Timer from './components/widgets/Timer.vue';
 import Log from './components/widgets/Log.vue';
 import Analysis from './components/widgets/Analysis.vue';
 import Goals from './components/widgets/Goals.vue';
-import Footer from './components/widgets/Footer.vue';
+import Footer from './components/Footer.vue';
 </script>
 
 <template>
