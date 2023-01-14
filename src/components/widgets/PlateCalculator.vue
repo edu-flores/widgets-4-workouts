@@ -41,7 +41,7 @@ import MenuIcon from '../icons/IconMenu.vue';
 
 #inner-bar {
   background-color: $light;
-  width: 100%;
+  width: 7rem;
   height: 0.4rem;
 }
 

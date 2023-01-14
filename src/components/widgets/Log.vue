@@ -11,14 +11,14 @@ import Notes from '../Notes.vue';
 <template>
   <section>
     <div class="container-fluid p-0">
-      <div class="row g-0">
+      <div class="row gx-0 gy-3 gy-sm-0">
         <!-- Log -->
         <div class="log col-12 col-sm-8 pe-sm-4">
           <div class="mb-3">
             <h6><b>Log</b></h6>
           </div>
-          <div>
-            <!-- Exercise -->
+          <!-- Exercise -->
+          <div class="ps-sm-3 pe-sm-5">
             <div class="mb-2">
               <span><b>Bench Press</b></span>
               <div class="watch">
@@ -51,8 +51,8 @@ import Notes from '../Notes.vue';
               </tbody>
             </table>
             <button type="button" class="add-set w-100">+ Add Set</button>
+            <button type="button" class="add-exercise w-100">+ Add Exercise</button>
           </div>
-          <button type="button" class="add-exercise w-100">+ Add Exercise</button>
         </div>
         <!-- Notes -->
         <div class="col-12 col-sm-4">

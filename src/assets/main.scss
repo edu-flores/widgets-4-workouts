@@ -1,3 +1,4 @@
+// Theme
 $primary: #fba300;
 $bg: #fffdfc;
 $darker: #4e4a55;
@@ -5,6 +6,17 @@ $dark: #75727b;
 $lighter: #e9e8eb;
 $light: #d9d9d9;
 
+// Media queries
+$queries: (
+  xs: 0,
+  sm: '(min-width: 576px)',
+  md: '(min-width: 768px)',
+  lg: '(min-width: 992px)',
+  xl: '(min-width: 1200px)',
+  xxl: '(min-width: 1400px)'
+);
+
+// Mixins
 @mixin flexbox($direction, $align, $justify) {
   display: flex;
   flex-direction: $direction;
@@ -12,6 +24,7 @@ $light: #d9d9d9;
   justify-content: $justify;
 }
 
+// General
 * {
   box-sizing: border-box;
 }
@@ -24,6 +37,7 @@ body {
   padding: 1rem 2rem;
 }
 
+// Custom progress bar
 progress {
   border-radius: 10px;
   height: 9px;
