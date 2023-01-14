@@ -11,14 +11,14 @@ import Notes from '../Notes.vue';
 <template>
   <section>
     <div class="container-fluid p-0">
-      <div class="row gx-0 gy-3 gy-sm-0">
+      <div class="row gx-0 gy-3">
         <!-- Log -->
-        <div class="log col-12 col-sm-8 pe-sm-4">
+        <div class="log col-12 col-sm-8">
           <div class="mb-3">
             <h6><b>Log</b></h6>
           </div>
           <!-- Exercise -->
-          <div class="ps-sm-3 pe-sm-5">
+          <div>
             <div class="mb-2">
               <span><b>Bench Press</b></span>
               <div class="watch">
@@ -68,6 +68,12 @@ import Notes from '../Notes.vue';
 
 span {
   color: $darker;
+}
+
+@media #{map-get($queries, sm)} {
+  .log {
+    padding-right: 2rem;
+  }
 }
 
 .watch {
