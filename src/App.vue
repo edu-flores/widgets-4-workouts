@@ -80,6 +80,7 @@ import Footer from './components/Footer.vue';
   border-radius: 6px;
   padding: 1.5rem 2rem;
   box-shadow: rgba(33, 35, 38, 0.1) 0px 10px 10px -10px;
+  height: 100%;
 }
 
 .custom-widget {
