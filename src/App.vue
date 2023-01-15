@@ -6,6 +6,7 @@ import Music from './components/widgets/Music.vue';
 import WarmupDropset from './components/widgets/WarmupDropset.vue';
 import Timer from './components/widgets/Timer.vue';
 import Log from './components/widgets/Log.vue';
+import Notes from './components/widgets/Notes.vue';
 import Analysis from './components/widgets/Analysis.vue';
 import Goals from './components/widgets/Goals.vue';
 import Footer from './components/Footer.vue';
@@ -17,48 +18,35 @@ import Footer from './components/Footer.vue';
     <main class="container-fluid py-4 px-0">
       <div class="row gy-4">
         <div class="col-12 col-md-8">
-          <div class="widget">
-            <Statistics />
-          </div>
+          <Statistics class="widget" />
         </div>
         <div class="col-12 col-md-4">
-          <div class="widget">
-            <PlateCalculator />
-          </div>
+          <PlateCalculator class="widget" />
         </div>
         <div class="col-12 col-lg-4">
           <div class="row gy-4">
             <div class="col-12 col-md-6 col-lg-12">
-              <div class="custom-widget placeholder-glow">
-                <Music />
-              </div>
+              <Music class="custom-widget" />
             </div>
             <div class="col-12 col-sm-6 col-md-3 col-lg-6">
-              <div class="widget">
-                <WarmupDropset />
-              </div>
+              <WarmupDropset class="widget" />
             </div>
             <div class="col-12 col-sm-6 col-md-3 col-lg-6">
-              <div class="widget">
-                <Timer />
-              </div>
+              <Timer class="widget" />
             </div>
           </div>
         </div>
-        <div class="col-12 col-lg-8">
-          <div class="widget">
-            <Log />
-          </div>
+        <div class="col-12 col-md-8 col-lg-6">
+          <Log class="widget" />
+        </div>
+        <div class="col-12 col-md-4 col-lg-2">
+          <Notes class="widget" />
         </div>
         <div class="col-12 col-lg-8">
-          <div class="widget">
-            <Analysis />
-          </div>
+          <Analysis class="widget" />
         </div>
         <div class="col-12 col-lg-4">
-          <div class="widget">
-            <Goals />
-          </div>
+          <Goals class="widget" />
         </div>
       </div>
     </main>

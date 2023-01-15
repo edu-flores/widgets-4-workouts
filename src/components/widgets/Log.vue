@@ -3,60 +3,52 @@
 import StopwatchIcon from '../icons/IconStopwatch.vue';
 import FilledCheckIcon from '../icons/IconFilledCheck.vue';
 import EmptyCheckIcon from '../icons/IconEmptyCheck.vue';
-
-// Note section
-import Notes from '../Notes.vue';
 </script>
 
 <template>
   <section>
-    <div class="container-fluid p-0">
-      <div class="row gx-0 gy-3">
-        <!-- Log -->
-        <div class="log col-12 col-sm-8">
-          <div class="mb-3">
-            <h6><b>Log</b></h6>
-          </div>
-          <!-- Exercise -->
-          <div>
-            <div class="mb-2">
-              <span><b>Bench Press</b></span>
-              <StopwatchIcon class="ms-2 mb-1" />
-            </div>
-            <!-- Exercie Table -->
-            <table class="w-100 text-center">
-              <thead>
-                <tr>
-                  <th class="w-25">SET</th>
-                  <th class="w-25">WEIGHT</th>
-                  <th class="w-25">REPS</th>
-                  <th class="w-25">DONE</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td class="w-25">1</td>
-                  <td class="w-25">170 lbs</td>
-                  <td class="w-25">8</td>
-                  <td class="w-25"><FilledCheckIcon /></td>
-                </tr>
-                <tr>
-                  <td class="w-25">2</td>
-                  <td class="w-25">170 lbs</td>
-                  <td class="w-25">6</td>
-                  <td class="w-25"><EmptyCheckIcon /></td>
-                </tr>
-              </tbody>
-            </table>
-            <button type="button" class="add-set w-100">+ Add Set</button>
-            <button type="button" class="add-exercise w-100">+ Add Exercise</button>
-          </div>
-        </div>
-        <!-- Notes -->
-        <div class="col-12 col-sm-4">
-          <Notes />
-        </div>
+    <div class="mb-3">
+      <h6><b>Log</b></h6>
+    </div>
+    <!-- Exercise -->
+    <div>
+      <div class="mb-2">
+        <span><b>Bench Press</b></span>
+        <StopwatchIcon class="ms-2 mb-1" />
       </div>
+      <!-- Exercie Table -->
+      <table class="w-100 text-center">
+        <thead>
+          <tr>
+            <th class="w-25">SET</th>
+            <th class="w-25">WEIGHT</th>
+            <th class="w-25">REPS</th>
+            <th class="w-25">DONE</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="w-25">1</td>
+            <td class="w-25">170 lbs</td>
+            <td class="w-25">8</td>
+            <td class="w-25"><FilledCheckIcon /></td>
+          </tr>
+          <tr>
+            <td class="w-25">2</td>
+            <td class="w-25">170 lbs</td>
+            <td class="w-25">6</td>
+            <td class="w-25"><EmptyCheckIcon /></td>
+          </tr>
+          <tr>
+            <td class="w-25">3</td>
+            <td class="w-25">170 lbs</td>
+            <td class="w-25">4</td>
+            <td class="w-25"><EmptyCheckIcon /></td>
+          </tr>
+        </tbody>
+      </table>
+      <button type="button" class="add-set w-100">+ Add Set</button>
+      <button type="button" class="add-exercise w-100">+ Add Exercise</button>
     </div>
   </section>
 </template>
