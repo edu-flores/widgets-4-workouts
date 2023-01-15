@@ -21,9 +21,7 @@ import Notes from '../Notes.vue';
           <div>
             <div class="mb-2">
               <span><b>Bench Press</b></span>
-              <div class="watch">
-                <StopwatchIcon />
-              </div>
+              <StopwatchIcon class="ms-2 mb-1" />
             </div>
             <!-- Exercie Table -->
             <table class="w-100 text-center">
@@ -32,7 +30,7 @@ import Notes from '../Notes.vue';
                   <th class="w-25">SET</th>
                   <th class="w-25">WEIGHT</th>
                   <th class="w-25">REPS</th>
-                  <th class="w-25">✓</th>
+                  <th class="w-25">DONE</th>
                 </tr>
               </thead>
               <tbody>
@@ -43,7 +41,7 @@ import Notes from '../Notes.vue';
                   <td class="w-25"><FilledCheckIcon /></td>
                 </tr>
                 <tr>
-                  <td class="w-25">1</td>
+                  <td class="w-25">2</td>
                   <td class="w-25">170 lbs</td>
                   <td class="w-25">6</td>
                   <td class="w-25"><EmptyCheckIcon /></td>
@@ -74,11 +72,6 @@ span {
   .log {
     padding-right: 2rem;
   }
-}
-
-.watch {
-  display: inline;
-  margin-left: 0.5rem;
 }
 
 th {
