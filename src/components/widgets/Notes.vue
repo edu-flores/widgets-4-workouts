@@ -8,7 +8,9 @@ import Editor from '../Editor.vue';
       <h6><b>Notes</b></h6>
     </div>
     <!-- Edit Section -->
-    <div contenteditable="true"></div>
+    <div class="edit-container">
+      <div contenteditable="true"></div>
+    </div>
     <!-- Styling -->
     <Editor />
   </section>
@@ -17,7 +19,22 @@ import Editor from '../Editor.vue';
 <style lang="scss" scoped>
 @import '../../assets/main.scss';
 
-[contenteditable="true"]:focus {
+section {
+  position: relative;
+}
+
+.edit-container {
+  height: 13rem;
+  overflow-y: auto;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+[contenteditable="true"] {
   height: 100%;
 
   &:focus {
