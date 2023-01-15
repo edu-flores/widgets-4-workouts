@@ -7,10 +7,11 @@ import EmptyCheckIcon from '../icons/IconEmptyCheck.vue';
 
 <template>
   <section>
+    <!-- Title -->
     <div class="mb-3">
       <h6><b>Log</b></h6>
     </div>
-    <!-- Exercise -->
+    <!-- Content -->
     <div>
       <div class="mb-2">
         <span><b>Bench Press</b></span>
@@ -47,6 +48,7 @@ import EmptyCheckIcon from '../icons/IconEmptyCheck.vue';
           </tr>
         </tbody>
       </table>
+      <!-- New Set & Exercise -->
       <button type="button" class="add-set w-100">+ Add Set</button>
       <button type="button" class="add-exercise w-100">+ Add Exercise</button>
     </div>

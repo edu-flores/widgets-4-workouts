@@ -1,4 +1,5 @@
 <script setup>
+// Stat component
 import Stat from '../Stat.vue';
 
 // Volume, reps, exercises and best 1RM badges style and data
@@ -32,9 +33,11 @@ const stats = [
 
 <template>
   <section>
+    <!-- Title -->
     <div class="mb-3">
       <h6><b>Statistics</b></h6>
     </div>
+    <!-- Content -->
     <div class="container-fluid">
       <div class="row gy-3">
         <div class="col-12 col-sm-6 col-lg-3" v-for="stat in stats" :key="stat.id">

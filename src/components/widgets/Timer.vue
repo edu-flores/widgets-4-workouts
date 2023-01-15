@@ -1,4 +1,5 @@
 <script setup>
+// Icons
 import MenuIcon from '../icons/IconMenu.vue';
 import PlayIcon from '../icons/IconPlay.vue';
 import PauseIcon from '../icons/IconPause.vue';

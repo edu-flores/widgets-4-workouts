@@ -32,16 +32,20 @@ const donutSeries = [25, 10, 50, 30];
 
 <template>
   <section class="h-100">
+    <!-- Title -->
     <div class="mb-3">
       <h6><b>Analysis</b></h6>
     </div>
+    <!-- Content -->
     <div class="container-fluid">
       <div class="row gy-3 align-items-center">
+        <!-- Donut Chart -->
         <div class="col-12 col-lg-4 d-flex justify-content-center">
           <apexchart width="250" type="donut" :options="donutOptions" :series="donutSeries"></apexchart>
         </div>
         <div class="col-12 col-lg-8">
           <div class="row">
+            <!-- Exercise Highlights -->
             <div class="col-12 col-sm-6 col-md-4">
               <p class="text-center"><b>Bench Press</b></p>
               <ul>

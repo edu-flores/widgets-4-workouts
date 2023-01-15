@@ -1,5 +1,9 @@
 <script setup>
+// Header & Footer
 import Header from './components/Header.vue';
+import Footer from './components/Footer.vue';
+
+// Widgets
 import Statistics from './components/widgets/Statistics.vue';
 import PlateCalculator from './components/widgets/PlateCalculator.vue';
 import Music from './components/widgets/Music.vue';
@@ -9,47 +13,57 @@ import Log from './components/widgets/Log.vue';
 import Notes from './components/widgets/Notes.vue';
 import Analysis from './components/widgets/Analysis.vue';
 import Goals from './components/widgets/Goals.vue';
-import Footer from './components/Footer.vue';
 </script>
 
 <template>
   <div id="main-container">
+    <!-- Header -->
     <Header />
     <main class="container-fluid py-4 px-0">
       <div class="row gy-4">
+        <!-- Statistics -->
         <div class="col-12 col-md-8">
           <Statistics class="widget" />
         </div>
+        <!-- Plate Calculator -->
         <div class="col-12 col-md-4">
           <PlateCalculator class="widget" />
         </div>
         <div class="col-12 col-lg-4">
           <div class="row gy-4">
+            <!-- Music -->
             <div class="col-12 col-md-6 col-lg-12">
               <Music style="height: 152px;" />
             </div>
+            <!-- Warmup & Dropset Calculator -->
             <div class="col-12 col-sm-6 col-md-3 col-lg-6">
               <WarmupDropset class="widget" />
             </div>
+            <!-- Timer -->
             <div class="col-12 col-sm-6 col-md-3 col-lg-6">
               <Timer class="widget" />
             </div>
           </div>
         </div>
+        <!-- Log -->
         <div class="col-12 col-md-8 col-lg-6">
           <Log class="widget" />
         </div>
+        <!-- Notes -->
         <div class="col-12 col-md-4 col-lg-2">
           <Notes class="widget" />
         </div>
+        <!-- Analysis -->
         <div class="col-12 col-lg-8">
           <Analysis class="widget" />
         </div>
+        <!-- Goals -->
         <div class="col-12 col-lg-4">
           <Goals class="widget" />
         </div>
       </div>
     </main>
+    <!-- Footer -->
     <Footer />
   </div>
 </template>

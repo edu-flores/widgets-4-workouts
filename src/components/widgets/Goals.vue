@@ -1,15 +1,18 @@
 <script setup>
+// Icons
 import PlusIcon from '../icons/IconPlus.vue';
 </script>
 
 <template>
   <section>
+    <!-- Title -->
     <div class="mb-4">
       <h6><b>Goals</b></h6>
     </div>
-    <!-- Progress Bars -->
+    <!-- Content -->
     <div class="container-fluid">
       <div class="row">
+        <!-- Progress Bars -->
         <div class="col-12 col-sm-6 col-lg-12">
           <p class="goal"><b>Total Volume</b></p>
           <progress class="w-100" value="32" max="100"></progress>
@@ -26,7 +29,7 @@ import PlusIcon from '../icons/IconPlus.vue';
         </div>
       </div>
     </div>
-    <!-- Add New Goal Section -->
+    <!-- Edit Goals -->
     <div class="add mt-3">
       <PlusIcon />
       <span>New Goal</span>

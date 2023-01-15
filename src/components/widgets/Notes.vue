@@ -1,9 +1,11 @@
 <script setup>
+// Bottom text editor
 import Editor from '../Editor.vue';
 </script>
 
 <template>
   <section class="h-100">
+    <!-- Title -->
     <div class="mb-3">
       <h6><b>Notes</b></h6>
     </div>

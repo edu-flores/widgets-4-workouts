@@ -1,13 +1,19 @@
 <script setup>
+// Icons
 import MenuIcon from '../icons/IconMenu.vue';
 </script>
 
 <template>
   <section>
+    <!-- Menu -->
     <div class="menu text-end">
       <MenuIcon />
     </div>
-    <h6><b>Plate Calculator</b></h6>
+    <!-- Title -->
+    <div>
+      <h6><b>Plate Calculator</b></h6>
+    </div>
+    <!-- Content -->
     <div class="container-fluis">
       <div class="row align-items-center justify-content-between">
         <!-- Visual Representation -->
