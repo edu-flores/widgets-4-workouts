@@ -26,7 +26,7 @@ import Footer from './components/Footer.vue';
         <div class="col-12 col-lg-4">
           <div class="row gy-4">
             <div class="col-12 col-md-6 col-lg-12">
-              <Music class="spotify-widget" />
+              <Music style="height: 152px;" />
             </div>
             <div class="col-12 col-sm-6 col-md-3 col-lg-6">
               <WarmupDropset class="widget" />
@@ -69,13 +69,5 @@ import Footer from './components/Footer.vue';
   padding: 1.5rem 2rem;
   box-shadow: rgba(33, 35, 38, 0.1) 0px 10px 10px -10px;
   height: 100%;
-}
-
-.spotify-widget {
-  background-color: #282828;
-  border: 1px solid $lighter;
-  border-radius: 6px;
-  height: 152px;
-  box-shadow: rgba(33, 35, 38, 0.1) 0px 10px 10px -10px;
 }
 </style>
