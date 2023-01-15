@@ -17,11 +17,12 @@ $queries: (
 );
 
 // Mixins
-@mixin flexbox($direction, $align, $justify) {
+@mixin flexbox($direction: row, $align: start, $justify: start, $gap: 0) {
   display: flex;
   flex-direction: $direction;
   align-items: $align;
   justify-content: $justify;
+  gap: $gap;
 }
 
 // General
