@@ -16,7 +16,7 @@ const props = defineProps({
 });
 
 // Events
-const emits = defineEmits(['toggleSet', 'addSet', 'addExercise']);
+const emits = defineEmits(['toggleSet', 'addSet', 'removeSet', 'addExercise']);
 </script>
 
 <template>
@@ -45,8 +45,13 @@ const emits = defineEmits(['toggleSet', 'addSet', 'addExercise']);
           <tbody>
             <tr v-for="(set, i) in exercise.sets" :key="i">
               <td class="w-25">{{ i+1 }}</td>
-              <td class="w-25">{{ set.weight }} lbs</td>
-              <td class="w-25">{{ set.reps }}</td>
+              <td class="w-25">
+                <input class="text-end" type="number" min="1" max="999" v-model="set.weight">
+                <span>&nbsp;lbs</span>
+              </td>
+              <td class="w-25">
+                <input type="number" min="1" max="50" v-model="set.reps">
+              </td>
               <td class="w-25" @click="$emit('toggleSet', index, i)">
                 <div v-if="set.done">
                   <FilledCheckIcon />
@@ -118,5 +123,25 @@ button {
 .add-exercise {
   background-color: $darker;
   color: $lighter;
+}
+
+input {
+  all: unset;
+  width: 2rem;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number] {
+  -moz-appearance: textfield;
+  appearance: textfield;
 }
 </style>

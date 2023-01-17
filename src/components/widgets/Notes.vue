@@ -39,4 +39,8 @@ section {
     outline: none;
   }
 }
+
+::-webkit-scrollbar {
+  display: none;
+}
 </style>
