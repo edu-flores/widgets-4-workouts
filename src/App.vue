@@ -32,14 +32,46 @@ const exercises = ref([
         weight: 170,
         reps: 6,
         done: false
+      },
+      {
+        weight: 170,
+        reps: 6,
+        done: false
+      }
+    ]
+  },
+  {
+    name: 'Bench Press',
+    timer: 60,
+    sets: [
+      {
+        weight: 170,
+        reps: 8,
+        done: true
+      },
+      {
+        weight: 170,
+        reps: 6,
+        done: false
+      },
+      {
+        weight: 170,
+        reps: 6,
+        done: false
       }
     ]
   }
 ]);
 
+// Mark set as done / not done
+const toggleSet = (exercise, set) => exercises.value[exercise].sets[set].done = !exercises.value[exercise].sets[set].done;
+
+// Remove set from an exercise
+const removeSet = (exercise, set) => exercises.value[exercise].sets[set].pop();
+
 // Push a set to an exercise
-const addSet = index => {
-  exercises.value[index].sets.push({
+const addSet = exercise => {
+  exercises.value[exercise].sets.push({
     weight: 0,
     reps: 0,
     done: false
@@ -97,7 +129,9 @@ const addExercise = () => {
           <Log 
             class="widget"
             :exercises="exercises"
+            @toggle-set="toggleSet"
             @add-set="addSet"
+            @remove-set="removeSet"
             @add-exercise="addExercise"
           />
         </div>
