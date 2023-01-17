@@ -4,9 +4,6 @@ import StopwatchIcon from '../icons/IconStopwatch.vue';
 import FilledCheckIcon from '../icons/IconFilledCheck.vue';
 import EmptyCheckIcon from '../icons/IconEmptyCheck.vue';
 
-// Utils
-import { formatSeconds } from '../../utils/utils';
-
 // Props
 const props = defineProps({
   exercises: Array
@@ -25,10 +22,18 @@ const emits = defineEmits(['toggleSet', 'addSet', 'removeSet', 'addExercise']);
       </div>
       <!-- Content -->
       <div :class="index !== 0 ? 'mt-4' : ''" v-for="(exercise, index) in exercises" :key="index">
-        <div class="mb-2">
-          <span><b>{{ exercise.name }}</b></span>
-          <StopwatchIcon class="ms-3 mb-1" /> {{ formatSeconds(exercise.timer) }}
+        <div class="d-flex justify-content-between mb-2">
+          <!-- Name -->
+          <input class="text-input" type="text" v-model="exercise.name" />
+          <!-- Timer -->
+          <div>
+            <input class="timer-input text-end" type="number" min="0" max="60" v-model="exercise.timer.minutes" />
+            <span style="width: 2px;">:</span>
+            <input class="timer-input" type="number" min="0" max="59" v-model="exercise.timer.seconds" />
+            <StopwatchIcon class="ms-1 mb-1" />
+          </div>
         </div>
+        <hr>
         <!-- Exercie Table -->
         <table class="w-100 text-center">
           <thead>
@@ -43,11 +48,11 @@ const emits = defineEmits(['toggleSet', 'addSet', 'removeSet', 'addExercise']);
             <tr v-for="(set, i) in exercise.sets" :key="i">
               <td class="w-25">{{ i+1 }}</td>
               <td class="w-25">
-                <input class="text-end" type="number" min="1" max="999" v-model="set.weight">
+                <input class="set-input text-end" type="number" min="1" max="999" v-model="set.weight" />
                 <span>&nbsp;lbs</span>
               </td>
               <td class="w-25">
-                <input type="number" min="1" max="50" v-model="set.reps">
+                <input class="set-input" type="number" min="1" max="50" v-model="set.reps" />
               </td>
               <td class="w-25" @click="$emit('toggleSet', index, i)">
                 <div v-if="set.done">
@@ -72,7 +77,7 @@ const emits = defineEmits(['toggleSet', 'addSet', 'removeSet', 'addExercise']);
 @import '../../assets/main.scss';
 
 .container-overflow {
-  height: 16rem;
+  height: 16.5rem;
   overflow-y: auto;
 }
 
@@ -120,11 +125,19 @@ button {
 
 input {
   all: unset;
-  width: 2rem;
 }
 
-::-webkit-scrollbar {
-  display: none;
+.text-input {
+  font-weight: bold;
+  width: 10rem;
+}
+
+.timer-input {
+  width: 1.5rem;
+}
+
+.set-input {
+  width: 2rem;
 }
 
 input::-webkit-outer-spin-button,
@@ -136,5 +149,9 @@ input::-webkit-inner-spin-button {
 input[type=number] {
   -moz-appearance: textfield;
   appearance: textfield;
+}
+
+::-webkit-scrollbar {
+  display: none;
 }
 </style>

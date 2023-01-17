@@ -21,38 +21,15 @@ import Goals from './components/widgets/Goals.vue';
 const exercises = ref([
   {
     name: 'Bench Press',
-    timer: 60,
+    timer: {
+      minutes: 3,
+      seconds: 0
+    },
     sets: [
       {
         weight: 170,
         reps: 8,
         done: true
-      },
-      {
-        weight: 170,
-        reps: 6,
-        done: false
-      },
-      {
-        weight: 170,
-        reps: 6,
-        done: false
-      }
-    ]
-  },
-  {
-    name: 'Bench Press',
-    timer: 60,
-    sets: [
-      {
-        weight: 170,
-        reps: 8,
-        done: true
-      },
-      {
-        weight: 170,
-        reps: 6,
-        done: false
       },
       {
         weight: 170,
@@ -81,13 +58,16 @@ const addSet = exercise => {
 // Push an exercise to the main array
 const addExercise = () => {
   exercises.value.push({
-    name: 'Bench Press',
-    timer: 60,
+    name: 'New Exercise',
+    timer: {
+      minutes: 3,
+      seconds: 0
+    },
     sets: [
       {
-        weight: 170,
-        reps: 8,
-        done: true
+        weight: 0,
+        reps: 0,
+        done: false
       }
     ]
   });
