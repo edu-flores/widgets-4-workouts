@@ -32,10 +32,6 @@ section {
   scrollbar-width: none;
 }
 
-::-webkit-scrollbar {
-  display: none;
-}
-
 [contenteditable="true"] {
   height: 100%;
 

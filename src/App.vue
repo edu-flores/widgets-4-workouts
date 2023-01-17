@@ -1,4 +1,7 @@
 <script setup>
+// Vue API
+import { ref } from 'vue';
+
 // Header & Footer
 import Header from './components/Header.vue';
 import Footer from './components/Footer.vue';
@@ -13,6 +16,50 @@ import Log from './components/widgets/Log.vue';
 import Notes from './components/widgets/Notes.vue';
 import Analysis from './components/widgets/Analysis.vue';
 import Goals from './components/widgets/Goals.vue';
+
+// Exercises for Log component
+const exercises = ref([
+  {
+    name: 'Bench Press',
+    timer: 60,
+    sets: [
+      {
+        weight: 170,
+        reps: 8,
+        done: true
+      },
+      {
+        weight: 170,
+        reps: 6,
+        done: false
+      }
+    ]
+  }
+]);
+
+// Push a set to an exercise
+const addSet = index => {
+  exercises.value[index].sets.push({
+    weight: 0,
+    reps: 0,
+    done: false
+  });
+}
+
+// Push an exercise to the main array
+const addExercise = () => {
+  exercises.value.push({
+    name: 'Bench Press',
+    timer: 60,
+    sets: [
+      {
+        weight: 170,
+        reps: 8,
+        done: true
+      }
+    ]
+  });
+}
 </script>
 
 <template>
@@ -47,7 +94,12 @@ import Goals from './components/widgets/Goals.vue';
         </div>
         <!-- Log -->
         <div class="col-12 col-md-8 col-lg-6">
-          <Log class="widget" />
+          <Log 
+            class="widget"
+            :exercises="exercises"
+            @add-set="addSet"
+            @add-exercise="addExercise"
+          />
         </div>
         <!-- Notes -->
         <div class="col-12 col-md-4 col-lg-2">

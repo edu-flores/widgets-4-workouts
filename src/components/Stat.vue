@@ -1,5 +1,5 @@
 <script setup>
-import { computed } from "vue";
+import { computed } from 'vue';
 
 // Icon components
 import VolumeIcon from './icons/IconVolume.vue';

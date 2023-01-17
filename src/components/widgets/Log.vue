@@ -3,6 +3,14 @@
 import StopwatchIcon from '../icons/IconStopwatch.vue';
 import FilledCheckIcon from '../icons/IconFilledCheck.vue';
 import EmptyCheckIcon from '../icons/IconEmptyCheck.vue';
+
+// Props
+const props = defineProps({
+  exercises: Array
+});
+
+// Events
+const emits = defineEmits(['addSet']);
 </script>
 
 <template>
@@ -12,9 +20,9 @@ import EmptyCheckIcon from '../icons/IconEmptyCheck.vue';
       <h6><b>Log</b></h6>
     </div>
     <!-- Content -->
-    <div>
+    <div class="mt-4" v-for="(exercise, index) in exercises" :key="index">
       <div class="mb-2">
-        <span><b>Bench Press</b></span>
+        <span><b>{{ exercise.name }}</b></span>
         <StopwatchIcon class="ms-2 mb-1" />
       </div>
       <!-- Exercie Table -->
@@ -28,35 +36,35 @@ import EmptyCheckIcon from '../icons/IconEmptyCheck.vue';
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td class="w-25">1</td>
-            <td class="w-25">170 lbs</td>
-            <td class="w-25">8</td>
-            <td class="w-25"><FilledCheckIcon /></td>
-          </tr>
-          <tr>
-            <td class="w-25">2</td>
-            <td class="w-25">170 lbs</td>
-            <td class="w-25">6</td>
-            <td class="w-25"><EmptyCheckIcon /></td>
-          </tr>
-          <tr>
-            <td class="w-25">3</td>
-            <td class="w-25">170 lbs</td>
-            <td class="w-25">4</td>
-            <td class="w-25"><EmptyCheckIcon /></td>
+          <tr v-for="(set, i) in exercise.sets" :key="i">
+            <td class="w-25">{{ i+1 }}</td>
+            <td class="w-25">{{ set.weight }}</td>
+            <td class="w-25">{{ set.reps }}</td>
+            <td class="w-25">
+              <div v-if="set.done">
+                <FilledCheckIcon />
+              </div>
+              <div v-else>
+                <EmptyCheckIcon />
+              </div>
+            </td>
           </tr>
         </tbody>
       </table>
       <!-- New Set & Exercise -->
-      <button type="button" class="add-set w-100">+ Add Set</button>
-      <button type="button" class="add-exercise w-100">+ Add Exercise</button>
+      <button @click="$emit('addSet', index)" type="button" class="add-set w-100">+ Add Set</button>
     </div>
+    <button @click="$emit('addExercise')" type="button" class="add-exercise w-100">+ Add Exercise</button>
   </section>
 </template>
 
 <style lang="scss" scoped>
 @import '../../assets/main.scss';
+
+section {
+  height: 20rem;
+  overflow-y: auto;
+}
 
 span {
   color: $darker;
