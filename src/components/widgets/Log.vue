@@ -7,9 +7,6 @@ import EmptyCheckIcon from '../icons/IconEmptyCheck.vue';
 // Utils
 import { formatSeconds } from '../../utils/utils';
 
-// Components
-import Modal from '../Modal.vue';
-
 // Props
 const props = defineProps({
   exercises: Array
@@ -68,10 +65,6 @@ const emits = defineEmits(['toggleSet', 'addSet', 'removeSet', 'addExercise']);
       </div>
       <button @click="$emit('addExercise')" type="button" class="add-exercise w-100">+ Add Exercise</button>
     </div>
-    <!-- Modals -->
-    <Modal v-if="false">
-      
-    </Modal>
   </section>
 </template>
 
