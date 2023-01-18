@@ -10,7 +10,7 @@ const props = defineProps({
 });
 
 // Events
-const emits = defineEmits(['toggleSet', 'addSet', 'removeSet', 'addExercise']);
+const emits = defineEmits(['addSet', 'removeSet', 'addExercise', 'removeExercise']);
 </script>
 
 <template>
@@ -54,7 +54,8 @@ const emits = defineEmits(['toggleSet', 'addSet', 'removeSet', 'addExercise']);
               <td class="w-25">
                 <input class="set-input" type="number" min="1" max="50" v-model="set.reps" />
               </td>
-              <td class="w-25" @click="$emit('toggleSet', index, i)">
+              <td class="w-25" @click="set.done = !set.done">
+                <input type="checkbox" v-model="set.done" />
                 <div v-if="set.done">
                   <FilledCheckIcon />
                 </div>

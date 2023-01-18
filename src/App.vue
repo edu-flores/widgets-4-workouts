@@ -40,12 +40,6 @@ const exercises = ref([
   }
 ]);
 
-// Mark set as done / not done
-const toggleSet = (exercise, set) => exercises.value[exercise].sets[set].done = !exercises.value[exercise].sets[set].done;
-
-// Remove set from an exercise
-const removeSet = (exercise, set) => exercises.value[exercise].sets[set].pop();
-
 // Push a set to an exercise
 const addSet = exercise => {
   exercises.value[exercise].sets.push({
@@ -54,6 +48,9 @@ const addSet = exercise => {
     done: false
   });
 }
+
+// Remove set from an exercise
+const removeSet = (exercise, set) => exercises.value[exercise].sets[set].pop();
 
 // Push an exercise to the main array
 const addExercise = () => {
@@ -72,6 +69,9 @@ const addExercise = () => {
     ]
   });
 }
+
+// Remove an exercise from the main array
+const removeExercise = exercise => exercises.value.pop(exercise);
 </script>
 
 <template>
@@ -109,10 +109,10 @@ const addExercise = () => {
           <Log 
             class="widget"
             :exercises="exercises"
-            @toggle-set="toggleSet"
             @add-set="addSet"
             @remove-set="removeSet"
             @add-exercise="addExercise"
+            @remove-exercise="removeExercise"
           />
         </div>
         <!-- Notes -->
