@@ -27,7 +27,7 @@ const emits = defineEmits(['addSet', 'removeSet', 'addExercise', 'removeExercise
           <input class="text-input" type="text" v-model="exercise.name" />
           <!-- Timer -->
           <div>
-            <input class="timer-input text-end" type="number" min="0" max="60" v-model="exercise.timer.minutes" />
+            <input class="timer-input text-end" type="number" min="0" max="59" v-model="exercise.timer.minutes" />
             <span style="width: 2px;">:</span>
             <input class="timer-input" type="number" min="0" max="59" v-model="exercise.timer.seconds" />
             <StopwatchIcon class="ms-1 mb-1" />
@@ -55,13 +55,8 @@ const emits = defineEmits(['addSet', 'removeSet', 'addExercise', 'removeExercise
                 <input class="set-input" type="number" min="1" max="50" v-model="set.reps" />
               </td>
               <td class="w-25" @click="set.done = !set.done">
-                <input type="checkbox" v-model="set.done" />
-                <div v-if="set.done">
-                  <FilledCheckIcon />
-                </div>
-                <div v-else>
-                  <EmptyCheckIcon />
-                </div>
+                <div v-if="set.done"><FilledCheckIcon /></div>
+                <div v-else><EmptyCheckIcon /></div>
               </td>
             </tr>
           </tbody>

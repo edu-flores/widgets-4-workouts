@@ -82,7 +82,10 @@ const removeExercise = exercise => exercises.value.pop(exercise);
       <div class="row gy-4">
         <!-- Statistics -->
         <div class="col-12 col-md-8">
-          <Statistics class="widget" />
+          <Statistics
+            class="widget"
+            :exercises="exercises"
+          />
         </div>
         <!-- Plate Calculator -->
         <div class="col-12 col-md-4">
@@ -92,7 +95,7 @@ const removeExercise = exercise => exercises.value.pop(exercise);
           <div class="row gy-4">
             <!-- Music -->
             <div class="col-12 col-md-6 col-lg-12">
-              <Music style="height: 152px;" />
+              <!-- <Music style="height: 152px;" /> -->
             </div>
             <!-- Warmup & Dropset Calculator -->
             <div class="col-12 col-sm-6 col-md-3 col-lg-6">
