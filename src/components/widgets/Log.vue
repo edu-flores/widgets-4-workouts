@@ -52,7 +52,7 @@ const emits = defineEmits(['addSet', 'removeSet', 'addExercise', 'removeExercise
                 <span>&nbsp;lbs</span>
               </td>
               <td class="w-25">
-                <input class="set-input" type="number" min="1" max="50" v-model="set.reps" />
+                <input class="set-input" type="number" min="1" max="20" v-model="set.reps" />
               </td>
               <td class="w-25" @click="set.done = !set.done">
                 <div v-if="set.done"><FilledCheckIcon /></div>

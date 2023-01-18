@@ -1,4 +1,7 @@
 <script setup>
+// Vue API
+import { ref, watch } from 'vue';
+
 // Stat component
 import Stat from '../Stat.vue';
 
@@ -11,7 +14,7 @@ const props = defineProps({
 });
 
 // Volume, reps, exercises and best 1RM badges style and data
-const stats = [
+const stats = ref([
   {
     id: 0,
     opacity: 1,
@@ -36,36 +39,42 @@ const stats = [
     data: '0 lbs',
     label: 'Best 1RM'
   }
-];
+]);
 
-// Total volume
-const totalVolume = props.exercises.reduce((totalVolume, exercise) => {
-  const exerciseVolume = exercise.sets.reduce((volume, set) => {
-    return volume + (set.weight * set.reps);
-  }, 0);
-  return totalVolume + exerciseVolume;
-}, 0);
-stats[0].data = formatNumber(totalVolume) + ' lbs';
+// Update stats when exercises changes
+watch(
+  props.exercises,
+  () => {
+    // Total volume
+    const totalVolume = props.exercises.reduce((totalVolume, exercise) => {
+      const exerciseVolume = exercise.sets.reduce((volume, set) => {
+        return volume + (set.weight * set.reps);
+      }, 0);
+      return totalVolume + exerciseVolume;
+    }, 0);
+    stats.value[0].data = formatNumber(totalVolume) + ' lbs';
 
-// Repetitions
-const totalReps = props.exercises.reduce((totalReps, exercise) => {
-  const exerciseReps = exercise.sets.reduce((reps, set) => {
-    return reps + set.reps;
-  }, 0);
-  return totalReps + exerciseReps;
-}, 0);
-stats[1].data = formatNumber(totalReps);
+    // Repetitions
+    const totalReps = props.exercises.reduce((totalReps, exercise) => {
+      const exerciseReps = exercise.sets.reduce((reps, set) => {
+        return reps + set.reps;
+      }, 0);
+      return totalReps + exerciseReps;
+    }, 0);
+    stats.value[1].data = formatNumber(totalReps);
 
-// Exercises
-stats[2].data = String(props.exercises.length);
+    // Exercises
+    stats.value[2].data = String(props.exercises.length);
 
-// Best 1RM
-const ORM = parseInt(Math.max.apply(Math, ...props.exercises.map(exercise => {
-  return exercise.sets.map(set => {
-    return set.weight / (1.0278 - 0.0278 * set.reps);
-  });
-})));
-stats[3].data = formatNumber(ORM) + ' lbs';
+    // Best 1RM
+    const ORM = parseInt(Math.max.apply(Math, ...props.exercises.map(exercise => {
+      return exercise.sets.map(set => {
+        return set.weight / (1.0278 - 0.0278 * set.reps);
+      });
+    })));
+    stats.value[3].data = formatNumber(ORM) + ' lbs';
+  }
+);
 </script>
 
 <template>
