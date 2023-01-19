@@ -3,6 +3,11 @@
 import ScaleIcon from './icons/IconScale.vue';
 import CalendarIcon from './icons/IconCalendar.vue';
 import MoonIcon from './icons/IconMoon.vue';
+
+// Data
+const today = new Date();
+const days = ['Sun', 'Mon', 'Tues', 'Wed', 'Thurs', 'Fri', 'Sat'];
+const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 </script>
 
 <template>
@@ -16,7 +21,7 @@ import MoonIcon from './icons/IconMoon.vue';
       <!-- Date -->
       <div class="order-1 order-md-2 col-12 col-md-6 text-center">
         <CalendarIcon class="me-2 mb-1" />
-        <span><b>Monday</b>: January 9, 2023</span>
+        <span><b>{{ days[today.getDay()] }}</b>: {{ months[today.getMonth()] }} {{ today.getDay() }}, {{ today.getFullYear() }}</span>
       </div>
       <!-- Light & Dark Mode -->
       <div class="order-3 col-6 col-md-3 text-end">
