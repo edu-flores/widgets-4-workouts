@@ -13,26 +13,40 @@ import StopIcon from '../icons/IconStop.vue';
 
 // Data
 const timer = ref({ minutes: '02', seconds: '30' });
-let isPlaying = ref(false);
-let totalSecs = 150;
+let playing = ref(false);
+let started = false;
+let progressNow = 150;
+let progressMax = 150;
 
-// Add zeroes when necessary and count total seconds
+// Add zeroes when necessary and handle progress bar
 watch(
   timer.value,
   () => {
-    if (String(timer.value.minutes).length === 1) 
+    // Zeroes
+    if (String(timer.value.minutes).length === 1)
       timer.value.minutes = '0' + timer.value.minutes;
-    if (String(timer.value.seconds).length === 1) 
+    if (String(timer.value.seconds).length === 1)
       timer.value.seconds = '0' + timer.value.seconds;
 
-    totalSecs = parseInt(timer.value.minutes * 60) + parseInt(timer.value.seconds);
+    // Progress bar
+    if (!playing.value)
+      progressMax = parseInt(timer.value.minutes * 60) + parseInt(timer.value.seconds);
+    progressNow = parseInt(timer.value.minutes * 60) + parseInt(timer.value.seconds);
   }
 );
 
 // Start or stop timer
+let initial;
 let interval;
 const togglePlay = () => {
-  if (!isPlaying.value) {
+  // First time starting the timer
+  if (!started) {
+    started = true;
+    initial = {...timer.value};
+  }
+
+  // Play or pause
+  if (!playing.value) {
     // Start countdown
     interval = setInterval(() => {
       if (parseInt(timer.value.seconds) - 1 < 0) {  // Minutes change
@@ -40,9 +54,16 @@ const togglePlay = () => {
         timer.value.seconds = 59;
       } else {  // Seconds change
         timer.value.seconds -= 1;
+
+        // Countdown finish
         if (timer.value.minutes === '00' && timer.value.seconds === 0) {
           clearInterval(interval);
-          isPlaying.value = false;
+          playing.value = false;
+          started = false;
+          timer.value.minutes = initial.minutes;
+          timer.value.seconds = initial.seconds;
+          
+          // Notification
           const audio = new Audio(notification);
           audio.play();
         }
@@ -51,7 +72,24 @@ const togglePlay = () => {
   } else clearInterval(interval);
 
   // Toggle
-  isPlaying.value = !isPlaying.value;
+  playing.value = !playing.value;
+}
+
+// Reset timer to initial data
+const resetTimer = () => {
+  // Clear values
+  clearInterval(interval);
+  started = false;
+  playing.value = false;
+
+  // Reset values
+  if (initial) {
+    timer.value.minutes = initial.minutes;
+    timer.value.seconds = initial.seconds;
+    progressNow = parseInt(timer.value.minutes * 60) + parseInt(timer.value.seconds);
+    progressMax = parseInt(timer.value.minutes * 60) + parseInt(timer.value.seconds);
+    initial = null;
+  }
 }
 </script>
 
@@ -64,19 +102,19 @@ const togglePlay = () => {
     <!-- Timer Countdown -->
     <p>
       <b>
-        <input type="number" min="0" max="59" v-model="timer.minutes" />
+        <input type="number" min="0" max="59" v-model="timer.minutes" :disabled="started" />
         <span>:</span>
-        <input type="number" min="0" max="59" v-model="timer.seconds" />
+        <input type="number" min="0" max="59" v-model="timer.seconds" :disabled="started" />
       </b>
     </p>
-    <progress class="w-100" :value="totalSecs" :max="150"></progress>
+    <progress class="w-100" :value="progressNow || 1" :max="progressMax || 1"></progress>
     <!-- Timer Controls -->
     <div class="icons d-flex mt-2">
       <div @click="togglePlay">
-        <PlayIcon v-if="!isPlaying" />
+        <PlayIcon v-if="!playing" />
         <PauseIcon v-else />
       </div>
-      <StopIcon />
+      <StopIcon @click="resetTimer" />
     </div>
   </section>
 </template>
