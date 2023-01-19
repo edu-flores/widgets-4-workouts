@@ -9,7 +9,7 @@
 
 svg {
   fill: $dark;
-  width: 18px;
+  width: 20px;
 
   &:hover {
     cursor: pointer;
