@@ -21,7 +21,7 @@ const resize = () => input.value.style.width = input.value.value.length + 'ch';
     </div>
     <!-- Main Weight -->
     <p class="mb-0">
-      <b><input class="text-end" @input="resize" ref="input" type="number" min="0" max="999" v-model="n" /> lbs</b>
+      <b><input class="text-end" @input="resize" ref="input" type="number" min="0" max="999" step="5" v-model="n" /> lbs</b>
     </p>
     <!-- Derivations -->
     <div class="container-fluid p-0">
