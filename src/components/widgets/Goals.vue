@@ -4,6 +4,11 @@ import PlusIcon from '../icons/IconPlus.vue';
 
 // Components
 import Goal from '../Goal.vue';
+
+// Props
+const props = defineProps({
+  goals: Array
+});
 </script>
 
 <template>
@@ -17,10 +22,12 @@ import Goal from '../Goal.vue';
       <div class="row">
         <!-- Progress Bars -->
         <Goal
-          name="Total Volume"
-          :progress="1000"
-          :limit="2000"
-          units="lbs"
+          v-for="goal in goals"
+          :key="goal.name"
+          :name="goal.name"
+          :progress="goal.progress"
+          :limit="goal.limit"
+          :units="goal.units"
         />
       </div>
     </div>
@@ -35,6 +42,11 @@ import Goal from '../Goal.vue';
 <style lang="scss" scoped>
 @import '../../assets/main.scss';
 
+.row {
+  height: 8.5rem;
+  overflow-y: auto;
+}
+
 .add {
   @include flexbox(column, center, center);
   gap: 0.5rem;
@@ -42,5 +54,9 @@ import Goal from '../Goal.vue';
 
 span {
   font-size: small;
+}
+
+::-webkit-scrollbar {
+  display: none;
 }
 </style>

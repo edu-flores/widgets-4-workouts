@@ -67,6 +67,34 @@ const addExercise = () => {
 
 // Remove an exercise from the main array
 const removeExercise = exercise => exercises.value.pop(exercise);
+
+// Current goals
+const goals = [
+  {
+    name: 'Total Volume',
+    progress: 1000,
+    limit: 2000,
+    units: 'lbs'
+  },
+  {
+    name: 'Repetitions',
+    progress: 127,
+    limit: 150,
+    units: 'reps'
+  },
+  {
+    name: 'Total Volume',
+    progress: 1000,
+    limit: 2000,
+    units: 'lbs'
+  },
+  {
+    name: 'Repetitions',
+    progress: 127,
+    limit: 150,
+    units: 'reps'
+  }
+];
 </script>
 
 <template>
@@ -123,7 +151,10 @@ const removeExercise = exercise => exercises.value.pop(exercise);
         </div>
         <!-- Goals -->
         <div class="col-12 col-lg-4">
-          <Goals class="widget" />
+          <Goals
+            class="widget"
+            :goals="goals"
+          />
         </div>
       </div>
     </main>
