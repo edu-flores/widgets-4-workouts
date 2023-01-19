@@ -2,6 +2,9 @@
 // Vue API
 import { ref, watch } from 'vue';
 
+// Notification sound
+import notification from '../../sounds/timer-end.wav';
+
 // Icons
 import MenuIcon from '../icons/IconMenu.vue';
 import PlayIcon from '../icons/IconPlay.vue';
@@ -40,6 +43,8 @@ const togglePlay = () => {
         if (timer.value.minutes === '00' && timer.value.seconds === 0) {
           clearInterval(interval);
           isPlaying.value = false;
+          const audio = new Audio(notification);
+          audio.play();
         }
       }
     }, 1000);
