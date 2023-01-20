@@ -6,7 +6,6 @@ import { ref, watch } from 'vue';
 import notification from '../../sounds/timer-end.wav';
 
 // Icons
-import MenuIcon from '../icons/IconMenu.vue';
 import PlayIcon from '../icons/IconPlay.vue';
 import PauseIcon from '../icons/IconPause.vue';
 import StopIcon from '../icons/IconStop.vue';
@@ -95,10 +94,6 @@ const resetTimer = () => {
 
 <template>
   <section class="text-center">
-    <!-- Menu -->
-    <div class="menu text-end">
-      <MenuIcon />
-    </div>
     <!-- Timer Countdown -->
     <p>
       <b>
@@ -121,11 +116,6 @@ const resetTimer = () => {
 
 <style lang="scss" scoped>
 @import '../../assets/main.scss';
-
-.menu {
-  margin-top: -1.5rem;
-  margin-right: -1rem;
-}
 
 p {
   color: $darker;

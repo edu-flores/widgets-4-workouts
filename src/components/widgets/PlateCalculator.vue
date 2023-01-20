@@ -1,14 +1,8 @@
 <script setup>
-// Icons
-import MenuIcon from '../icons/IconMenu.vue';
 </script>
 
 <template>
   <section>
-    <!-- Menu -->
-    <div class="menu text-end">
-      <MenuIcon />
-    </div>
     <!-- Title -->
     <div>
       <h6><b>Plate Calculator</b></h6>
@@ -34,11 +28,6 @@ import MenuIcon from '../icons/IconMenu.vue';
 
 <style lang="scss" scoped>
 @import '../../assets/main.scss';
-
-.menu {
-  margin-top: -1.5rem;
-  margin-right: -1rem;
-}
 
 #barbell {
   position: relative;

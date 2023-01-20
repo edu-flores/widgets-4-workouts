@@ -2,9 +2,6 @@
 // Vue API
 import { ref } from 'vue';
 
-// Icons
-import MenuIcon from '../icons/IconMenu.vue';
-
 // Data
 const n = ref(225);
 
@@ -15,10 +12,6 @@ const resize = () => input.value.style.width = input.value.value.length + 'ch';
 
 <template>
   <section class="text-center">
-    <!-- Menu -->
-    <div class="menu text-end">
-      <MenuIcon />
-    </div>
     <!-- Main Weight -->
     <p class="mb-0">
       <b><input class="text-end" @input="resize" ref="input" type="number" min="0" max="999" step="5" v-model="n" /> lbs</b>
@@ -42,11 +35,6 @@ const resize = () => input.value.style.width = input.value.value.length + 'ch';
 
 <style lang="scss" scoped>
 @import '../../assets/main.scss';
-
-.menu {
-  margin-top: -1.5rem;
-  margin-right: -1rem;
-}
 
 p {
   color: $darker;

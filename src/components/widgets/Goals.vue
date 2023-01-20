@@ -1,6 +1,6 @@
 <script setup>
 // Icons
-import PlusIcon from '../icons/IconPlus.vue';
+import EditIcon from '../icons/IconEdit.vue';
 
 // Components
 import Goal from '../Goal.vue';
@@ -36,9 +36,9 @@ const props = defineProps({
       </div>
     </div>
     <!-- Edit Goals -->
-    <div class="add mt-3">
-      <PlusIcon />
-      <span>New Goal</span>
+    <div class="edit mt-3">
+      <EditIcon />
+      <span>Edit</span>
     </div>
   </section>
 </template>
@@ -51,7 +51,7 @@ const props = defineProps({
   overflow-y: auto;
 }
 
-.add {
+.edit {
   @include flexbox(column, center, center);
   gap: 0.5rem;
 }

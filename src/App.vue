@@ -21,10 +21,6 @@ import Goals from './components/widgets/Goals.vue';
 const exercises = ref([
   {
     name: 'Bench Press',
-    timer: {
-      minutes: 3,
-      seconds: 0
-    },
     sets: [
       {
         weight: 0,
@@ -51,10 +47,6 @@ const removeSet = (exercise, set) => exercises.value[exercise].sets[set].pop();
 const addExercise = () => {
   exercises.value.push({
     name: 'New Exercise',
-    timer: {
-      minutes: 3,
-      seconds: 0
-    },
     sets: [
       {
         weight: 0,

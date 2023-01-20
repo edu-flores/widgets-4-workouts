@@ -1,6 +1,6 @@
 <script setup>
 // Icons
-import StopwatchIcon from '../icons/IconStopwatch.vue';
+import DeleteIcon from '../icons/IconDelete.vue';
 import FilledCheckIcon from '../icons/IconFilledCheck.vue';
 import EmptyCheckIcon from '../icons/IconEmptyCheck.vue';
 
@@ -25,12 +25,10 @@ const emits = defineEmits(['addSet', 'removeSet', 'addExercise', 'removeExercise
         <div class="d-flex justify-content-between mb-2">
           <!-- Name -->
           <input class="text-input" type="text" v-model="exercise.name" />
-          <!-- Timer -->
+          <!-- Delete -->
           <div>
-            <input class="timer-input text-end" type="number" min="0" max="59" v-model="exercise.timer.minutes" />
-            <span style="width: 2px;">:</span>
-            <input class="timer-input" type="number" min="0" max="59" v-model="exercise.timer.seconds" />
-            <StopwatchIcon class="ms-1 mb-1" />
+            <span>Delete</span>
+            <DeleteIcon class="ms-2 mb-1" />
           </div>
         </div>
         <hr>
