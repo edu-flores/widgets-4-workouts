@@ -41,7 +41,7 @@ const addSet = exercise => {
 }
 
 // Remove set from an exercise
-const removeSet = (exercise, set) => exercises.value[exercise].sets[set].pop();
+const removeSet = (exercise, set) => exercises.value[exercise].sets.pop(set);
 
 // Push an exercise to the main array
 const addExercise = () => {

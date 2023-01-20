@@ -1,5 +1,6 @@
 <script setup>
 // Icons
+import MinusIcon from '../icons/IconMinus.vue';
 import DeleteIcon from '../icons/IconDelete.vue';
 import FilledCheckIcon from '../icons/IconFilledCheck.vue';
 import EmptyCheckIcon from '../icons/IconEmptyCheck.vue';
@@ -26,20 +27,17 @@ const emits = defineEmits(['addSet', 'removeSet', 'addExercise', 'removeExercise
           <!-- Name -->
           <input class="text-input" type="text" v-model="exercise.name" />
           <!-- Delete -->
-          <div>
-            <span>Delete</span>
-            <DeleteIcon class="ms-2 mb-1" />
-          </div>
+          <MinusIcon @click="$emit('removeExercise', index)" />
         </div>
         <hr>
         <!-- Exercie Table -->
-        <table class="w-100 text-center">
+        <table class="w-100 text-center mb-2">
           <thead>
             <tr>
               <th class="w-25">SET</th>
               <th class="w-25">WEIGHT</th>
               <th class="w-25">REPS</th>
-              <th class="w-25">DONE</th>
+              <th class="w-25">ACTION</th>
             </tr>
           </thead>
           <tbody>
@@ -52,9 +50,14 @@ const emits = defineEmits(['addSet', 'removeSet', 'addExercise', 'removeExercise
               <td class="w-25">
                 <input class="set-input" type="number" min="1" max="20" v-model="set.reps" />
               </td>
-              <td class="w-25" @click="set.done = !set.done">
-                <div v-if="set.done"><FilledCheckIcon /></div>
-                <div v-else><EmptyCheckIcon /></div>
+              <td class="d-flex justify-content-center m-auto w-25">
+                <div class="me-1" @click="set.done = !set.done">
+                  <div v-if="set.done"><FilledCheckIcon /></div>
+                  <div v-else><EmptyCheckIcon /></div>
+                </div>
+                <div class="ms-1">
+                  <DeleteIcon @click="$emit('removeSet', index, index)" />
+                </div>
               </td>
             </tr>
           </tbody>

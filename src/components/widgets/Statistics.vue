@@ -72,7 +72,7 @@ watch(
         return (set.done ? set.weight / (1.0278 - 0.0278 * set.reps) : 0);
       });
     })));
-    stats.value[3].data = formatNumber(ORM) + ' lbs';
+    stats.value[3].data = formatNumber(ORM || 0) + ' lbs';
   }
 );
 </script>
