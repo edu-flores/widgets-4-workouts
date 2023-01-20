@@ -56,7 +56,7 @@ const emits = defineEmits(['addSet', 'removeSet', 'addExercise', 'removeExercise
                   <div v-else><EmptyCheckIcon /></div>
                 </div>
                 <div class="ms-1">
-                  <DeleteIcon @click="$emit('removeSet', index, index)" />
+                  <DeleteIcon @click="$emit('removeSet', index, i)" />
                 </div>
               </td>
             </tr>

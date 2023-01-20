@@ -41,7 +41,7 @@ const addSet = exercise => {
 }
 
 // Remove set from an exercise
-const removeSet = (exercise, set) => exercises.value[exercise].sets.pop(set);
+const removeSet = (exercise, set) => exercises.value[exercise].sets.splice(set, 1);
 
 // Push an exercise to the main array
 const addExercise = () => {
@@ -58,7 +58,7 @@ const addExercise = () => {
 }
 
 // Remove an exercise from the main array
-const removeExercise = exercise => exercises.value.pop(exercise);
+const removeExercise = exercise => exercises.value.splice(exercise, 1);
 
 // Available goals
 const goals = [
