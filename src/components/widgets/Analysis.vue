@@ -17,9 +17,9 @@ const donutOptions = {
     }
   },
   fill: {
-    colors: ['#fba300', '#4e4a55']
+    colors: ['#35b9d3', '#4e4a55']
   },
-  colors: ['#fba300', '#4e4a55'],
+  colors: ['#35b9d3', '#4e4a55'],
   tooltip: {
     enabled: true,
     y: {

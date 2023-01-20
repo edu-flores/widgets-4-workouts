@@ -19,7 +19,7 @@ const props = defineProps({
 });
 
 // Computed style opacity
-const style = computed(() => `background-color: rgba(251, 163, 0, ${props.opacity})`);
+const style = computed(() => `background-color: rgba(53, 185, 211, ${props.opacity})`);
 </script>
 
 <template>
