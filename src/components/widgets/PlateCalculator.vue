@@ -3,7 +3,7 @@
 import { ref } from 'vue';
 
 // Data
-const n = 185;
+let n = 185;
 
 // Resize input while typing
 const input = ref(null);

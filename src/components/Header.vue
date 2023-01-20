@@ -8,7 +8,7 @@ import CalendarIcon from './icons/IconCalendar.vue';
 import MoonIcon from './icons/IconMoon.vue';
 
 // Personal weight
-const weight = 70.5;
+let weight = 70.5;
 const input = ref(null);
 const resize = () => {
   if (String(input.value.value).includes('.'))

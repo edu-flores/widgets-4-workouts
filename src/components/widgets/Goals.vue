@@ -1,9 +1,15 @@
 <script setup>
+// Vue API
+import { ref } from 'vue';
+
 // Icons
 import EditIcon from '../icons/IconEdit.vue';
 
 // Components
 import Goal from '../Goal.vue';
+
+// Data
+let editMode = ref(false);
 
 // Props
 const props = defineProps({
@@ -19,7 +25,7 @@ const props = defineProps({
     </div>
     <!-- Content -->
     <div class="container-fluid">
-      <div class="row">
+      <div class="bars row">
         <!-- Progress Bars -->
         <div
           class="col-12 col-sm-6 col-lg-12"
@@ -36,9 +42,19 @@ const props = defineProps({
       </div>
     </div>
     <!-- Edit Goals -->
-    <div class="edit mt-3">
+    <div v-if="!editMode" class="edit mt-4" @click="editMode = true">
       <EditIcon />
       <span>Edit</span>
+    </div>
+    <div class="row gy-1" v-else>
+      <div class="col-6 col-sm-3 col-lg-6" v-for="goal in goals" :key="goal.id">
+        <div>
+          <input :id="goal.id" type="checkbox" v-model="goal.active" />
+          <label :for="goal.id">&nbsp;{{ goal.name }}</label>
+        </div>
+      </div>
+      <!-- Done -->
+      <button class="mt-2" type="button" @click="editMode = false">✓ Done</button>
     </div>
   </section>
 </template>
@@ -46,7 +62,11 @@ const props = defineProps({
 <style lang="scss" scoped>
 @import '../../assets/main.scss';
 
-.row {
+section {
+  min-height: 20rem;
+}
+
+.bars {
   height: 8.5rem;
   overflow-y: auto;
 }
@@ -56,7 +76,18 @@ const props = defineProps({
   gap: 0.5rem;
 }
 
-span {
+button {
+  border: 0;
+  border-radius: 5px;
+  padding: 0.2rem 0;
+
+  &:active {
+    transform: translateY(1px);
+    filter: brightness(0.8);
+  }
+}
+
+span, button {
   font-size: small;
 }
 

@@ -61,10 +61,10 @@ const addExercise = () => {
 const removeExercise = exercise => exercises.value.splice(exercise, 1);
 
 // Available goals
-const goals = [
+const goals = ref([
   {
     id: 0,
-    name: 'Repetitions',
+    name: 'Reps',
     progress: 0,
     limit: 100,
     units: 'reps',
@@ -72,7 +72,7 @@ const goals = [
   },
   {
     id: 1,
-    name: 'Number of Sets',
+    name: 'Sets',
     progress: 0,
     limit: 15,
     units: 'sets',
@@ -88,13 +88,13 @@ const goals = [
   },
   {
     id: 3,
-    name: 'Total Volume',
+    name: 'Volume',
     progress: 0,
     limit: 1000,
     units: 'lbs',
     active: true
   }
-];
+]);
 </script>
 
 <template>
@@ -118,7 +118,7 @@ const goals = [
           <div class="row gy-4">
             <!-- Music -->
             <div class="col-12 col-md-6 col-lg-12">
-              <Music style="height: 152px;" />
+              <!-- <Music style="height: 152px;" /> -->
             </div>
             <!-- Warmup & Dropset Calculator -->
             <div class="col-12 col-sm-6 col-md-3 col-lg-6">
