@@ -8,7 +8,7 @@
 @import '../../assets/main.scss';
 
 svg {
-  fill: $darker;
+  fill: $dark;
   width: 20px;
 
   &:hover {

@@ -25,7 +25,7 @@ const emits = defineEmits(['addSet', 'removeSet', 'addExercise', 'removeExercise
       <div :class="index !== 0 ? 'mt-4' : ''" v-for="(exercise, index) in exercises" :key="index">
         <div class="d-flex justify-content-between mb-2">
           <!-- Name -->
-          <input class="text-input" type="text" v-model="exercise.name" />
+          <input class="name text-input" type="text" v-model="exercise.name" />
           <!-- Delete -->
           <MinusIcon @click="$emit('removeExercise', index)" />
         </div>
@@ -76,6 +76,10 @@ const emits = defineEmits(['addSet', 'removeSet', 'addExercise', 'removeExercise
 .container-overflow {
   height: 16.5rem;
   overflow-y: auto;
+}
+
+.name {
+  color: $darker;
 }
 
 span {

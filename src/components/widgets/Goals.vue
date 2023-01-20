@@ -14,7 +14,7 @@ const goals = ref([
     id: 0,
     name: 'Volume',
     progress: 0,
-    limit: 1000,
+    limit: 15000,
     units: 'lbs',
     active: true
   },
@@ -30,7 +30,7 @@ const goals = ref([
     id: 2,
     name: 'Reps',
     progress: 0,
-    limit: 100,
+    limit: 350,
     units: 'reps',
     active: true
   },

@@ -8,8 +8,8 @@
 @import '../../assets/main.scss';
 
 svg {
-  fill: $darker;
-  width: 20px;
+  fill: $dark;
+  width: 18px;
 
   &:hover {
     cursor: pointer;
