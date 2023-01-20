@@ -48,7 +48,7 @@ watch(
     // Total volume
     const totalVolume = props.exercises.reduce((totalVolume, exercise) => {
       const exerciseVolume = exercise.sets.reduce((volume, set) => {
-        return volume + (set.weight * set.reps);
+          return volume + (set.done ? set.weight * set.reps : 0);
       }, 0);
       return totalVolume + exerciseVolume;
     }, 0);
@@ -57,7 +57,7 @@ watch(
     // Repetitions
     const totalReps = props.exercises.reduce((totalReps, exercise) => {
       const exerciseReps = exercise.sets.reduce((reps, set) => {
-        return reps + set.reps;
+        return reps + (set.done ? set.reps : 0);
       }, 0);
       return totalReps + exerciseReps;
     }, 0);
@@ -69,7 +69,7 @@ watch(
     // Best 1RM
     const ORM = parseInt(Math.max.apply(Math, ...props.exercises.map(exercise => {
       return exercise.sets.map(set => {
-        return set.weight / (1.0278 - 0.0278 * set.reps);
+        return (set.done ? set.weight / (1.0278 - 0.0278 * set.reps) : 0);
       });
     })));
     stats.value[3].data = formatNumber(ORM) + ' lbs';

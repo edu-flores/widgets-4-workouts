@@ -25,7 +25,7 @@ const exercises = ref([
       {
         weight: 0,
         reps: 0,
-        done: true
+        done: false
       }
     ]
   }
