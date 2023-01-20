@@ -46,7 +46,7 @@ const emits = defineEmits(['addSet', 'removeSet', 'addExercise', 'removeExercise
             <tr v-for="(set, i) in exercise.sets" :key="i">
               <td class="w-25">{{ i+1 }}</td>
               <td class="w-25">
-                <input class="set-input text-end" type="number" min="1" max="999" v-model="set.weight" />
+                <input class="set-input text-end" type="number" min="5" max="995" step="5" v-model="set.weight" />
                 <span>&nbsp;lbs</span>
               </td>
               <td class="w-25">
