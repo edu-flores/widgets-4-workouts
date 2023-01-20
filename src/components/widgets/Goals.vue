@@ -1,6 +1,6 @@
 <script setup>
 // Vue API
-import { ref } from 'vue';
+import { watch, ref } from 'vue';
 
 // Icons
 import EditIcon from '../icons/IconEdit.vue';
@@ -9,12 +9,82 @@ import EditIcon from '../icons/IconEdit.vue';
 import Goal from '../Goal.vue';
 
 // Data
+const goals = ref([
+{
+    id: 0,
+    name: 'Volume',
+    progress: 0,
+    limit: 1000,
+    units: 'lbs',
+    active: true
+  },
+  {
+    id: 1,
+    name: 'Sets',
+    progress: 0,
+    limit: 15,
+    units: 'sets',
+    active: true
+  },
+  {
+    id: 2,
+    name: 'Reps',
+    progress: 0,
+    limit: 100,
+    units: 'reps',
+    active: true
+  },
+  {
+    id: 3,
+    name: 'Exercises',
+    progress: 0,
+    limit: 5,
+    units: 'exercises',
+    active: true
+  }
+]);
 let editMode = ref(false);
 
 // Props
 const props = defineProps({
-  goals: Array
+  exercises: Array
 });
+
+// Update goals when exercises changes
+watch(
+  props.exercises,
+  () => {
+    // Volume
+    const totalVolume = props.exercises.reduce((totalVolume, exercise) => {
+      const exerciseVolume = exercise.sets.reduce((volume, set) => {
+          return volume + (set.done ? set.weight * set.reps : 0);
+      }, 0);
+      return totalVolume + exerciseVolume;
+    }, 0);
+    goals.value[0].progress = totalVolume;
+
+    // Sets
+    const totalSets = props.exercises.reduce((totalSets, exercise) => {
+      const exerciseSets = exercise.sets.reduce((setCount, set) => {
+        return setCount + (set.done ? 1 : 0);
+      }, 0);
+      return totalSets + exerciseSets;
+    }, 0);
+    goals.value[1].progress = totalSets;
+    
+    // Reps
+    const totalReps = props.exercises.reduce((totalReps, exercise) => {
+      const exerciseReps = exercise.sets.reduce((reps, set) => {
+        return reps + (set.done ? set.reps : 0);
+      }, 0);
+      return totalReps + exerciseReps;
+    }, 0);
+    goals.value[2].progress = totalReps;
+    
+    // Exercises
+    goals.value[3].progress = props.exercises.length;
+  }
+);
 </script>
 
 <template>

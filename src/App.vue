@@ -17,7 +17,7 @@ import Notes from './components/widgets/Notes.vue';
 import Analysis from './components/widgets/Analysis.vue';
 import Goals from './components/widgets/Goals.vue';
 
-// Exercises for Log component
+// Exercises for Log component (main data)
 const exercises = ref([
   {
     name: 'Bench Press',
@@ -59,42 +59,6 @@ const addExercise = () => {
 
 // Remove an exercise from the main array
 const removeExercise = exercise => exercises.value.splice(exercise, 1);
-
-// Available goals
-const goals = ref([
-  {
-    id: 0,
-    name: 'Reps',
-    progress: 0,
-    limit: 100,
-    units: 'reps',
-    active: true
-  },
-  {
-    id: 1,
-    name: 'Sets',
-    progress: 0,
-    limit: 15,
-    units: 'sets',
-    active: true
-  },
-  {
-    id: 2,
-    name: 'Exercises',
-    progress: 0,
-    limit: 5,
-    units: 'exercises',
-    active: true
-  },
-  {
-    id: 3,
-    name: 'Volume',
-    progress: 0,
-    limit: 1000,
-    units: 'lbs',
-    active: true
-  }
-]);
 </script>
 
 <template>
@@ -118,7 +82,7 @@ const goals = ref([
           <div class="row gy-4">
             <!-- Music -->
             <div class="col-12 col-md-6 col-lg-12">
-              <!-- <Music style="height: 152px;" /> -->
+              <Music style="height: 152px;" />
             </div>
             <!-- Warmup & Dropset Calculator -->
             <div class="col-12 col-sm-6 col-md-3 col-lg-6">
@@ -153,7 +117,7 @@ const goals = ref([
         <div class="col-12 col-lg-4">
           <Goals
             class="widget"
-            :goals="goals"
+            :exercises="exercises"
           />
         </div>
       </div>
