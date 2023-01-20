@@ -21,14 +21,18 @@ const props = defineProps({
     <div class="container-fluid">
       <div class="row">
         <!-- Progress Bars -->
-        <Goal
-          v-for="goal in goals"
-          :key="goal.name"
-          :name="goal.name"
-          :progress="goal.progress"
-          :limit="goal.limit"
-          :units="goal.units"
-        />
+        <div
+          class="col-12 col-sm-6 col-lg-12"
+          v-for="goal in goals.filter(goal => goal.active)"
+          :key="goal.id"
+        >
+          <Goal
+            :name="goal.name"
+            :progress="goal.progress"
+            :limit="goal.limit"
+            :units="goal.units"
+          />
+        </div>
       </div>
     </div>
     <!-- Edit Goals -->

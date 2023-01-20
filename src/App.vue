@@ -68,31 +68,39 @@ const addExercise = () => {
 // Remove an exercise from the main array
 const removeExercise = exercise => exercises.value.pop(exercise);
 
-// Current goals
+// Available goals
 const goals = [
   {
-    name: 'Total Volume',
-    progress: 1000,
-    limit: 2000,
-    units: 'lbs'
-  },
-  {
+    id: 0,
     name: 'Repetitions',
-    progress: 127,
-    limit: 150,
-    units: 'reps'
+    progress: 0,
+    limit: 100,
+    units: 'reps',
+    active: true
   },
   {
+    id: 1,
+    name: 'Number of Sets',
+    progress: 0,
+    limit: 15,
+    units: 'sets',
+    active: true
+  },
+  {
+    id: 2,
+    name: 'Exercises',
+    progress: 0,
+    limit: 5,
+    units: 'exercises',
+    active: true
+  },
+  {
+    id: 3,
     name: 'Total Volume',
-    progress: 1000,
-    limit: 2000,
-    units: 'lbs'
-  },
-  {
-    name: 'Repetitions',
-    progress: 127,
-    limit: 150,
-    units: 'reps'
+    progress: 0,
+    limit: 1000,
+    units: 'lbs',
+    active: true
   }
 ];
 </script>

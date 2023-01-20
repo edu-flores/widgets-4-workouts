@@ -12,7 +12,7 @@ const props = defineProps({
 </script>
 
 <template>
-  <div class="col-12 col-sm-6 col-lg-12">
+  <div>
     <p class="goal"><b>{{ name }}</b></p>
     <progress class="w-100" :value="progress" :max="limit"></progress>
     <div class="text-end">
