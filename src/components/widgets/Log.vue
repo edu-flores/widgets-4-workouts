@@ -63,9 +63,9 @@ const emits = defineEmits(['addSet', 'removeSet', 'addExercise', 'removeExercise
           </tbody>
         </table>
         <!-- New Set & Exercise -->
-        <button @click="$emit('addSet', index)" type="button" class="add-set w-100">+ Add Set</button>
+        <button v-if="exercise.sets.length < 10" @click="$emit('addSet', index)" type="button" class="add-set w-100">+ Add Set</button>
       </div>
-      <button @click="$emit('addExercise')" type="button" class="add-exercise w-100">+ Add Exercise</button>
+      <button v-if="exercises.length < 10" @click="$emit('addExercise')" type="button" class="add-exercise w-100">+ Add Exercise</button>
     </div>
   </section>
 </template>
