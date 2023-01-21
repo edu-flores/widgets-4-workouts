@@ -4,6 +4,8 @@ import { watch, ref } from 'vue';
 
 // Icons
 import EditIcon from '../icons/IconEdit.vue';
+import FilledCheckIcon from '../icons/IconFilledCheck.vue';
+import EmptyCheckIcon from '../icons/IconEmptyCheck.vue';
 
 // Components
 import Goal from '../Goal.vue';
@@ -95,7 +97,7 @@ watch(
     </div>
     <!-- Content -->
     <div class="container-fluid">
-      <div class="bars row">
+      <div class="bars row mt-3">
         <!-- Progress Bars -->
         <div
           class="col-12 col-sm-6 col-lg-12"
@@ -112,19 +114,23 @@ watch(
       </div>
     </div>
     <!-- Edit Goals -->
-    <div v-if="!editMode" class="edit mt-4" @click="editMode = true">
+    <div v-if="!editMode" class="edit mt-5" @click="editMode = true">
       <EditIcon />
       <span>Edit</span>
     </div>
-    <div class="row gy-1" v-else>
+    <div class="row gy-1 mt-1" v-else>
       <div class="col-6 col-sm-3 col-lg-6" v-for="goal in goals" :key="goal.id">
         <div>
-          <input :id="goal.id" type="checkbox" v-model="goal.active" />
-          <label :for="goal.id">&nbsp;{{ goal.name }}</label>
+          <label class="d-flex me-1">
+            <input type="checkbox" v-model="goal.active" />
+            <div v-if="goal.active"><FilledCheckIcon /></div>
+            <div v-else><EmptyCheckIcon /></div>
+            <span>&nbsp; {{ goal.name }}</span>
+          </label>
         </div>
       </div>
       <!-- Done -->
-      <button class="mt-2" type="button" @click="editMode = false">✓ Done</button>
+      <button class="mt-3" type="button" @click="editMode = false">✓ Done</button>
     </div>
   </section>
 </template>
@@ -133,7 +139,7 @@ watch(
 @import '../../assets/main.scss';
 
 section {
-  min-height: 20rem;
+  min-height: 21rem;
 }
 
 .bars {
@@ -146,19 +152,20 @@ section {
   gap: 0.5rem;
 }
 
+input {
+  all: unset;
+}
+
 button {
   border: 0;
   border-radius: 5px;
   padding: 0.2rem 0;
+  font-size: small;
 
   &:active {
     transform: translateY(1px);
     filter: brightness(0.8);
   }
-}
-
-span, button {
-  font-size: small;
 }
 
 ::-webkit-scrollbar {

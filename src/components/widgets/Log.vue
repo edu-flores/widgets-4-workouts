@@ -51,10 +51,11 @@ const emits = defineEmits(['addSet', 'removeSet', 'addExercise', 'removeExercise
                 <input class="set-input" type="number" min="1" max="20" v-model="set.reps" />
               </td>
               <td class="d-flex justify-content-center m-auto w-25">
-                <div class="me-1" @click="set.done = !set.done">
+                <label class="me-1">
+                  <input type="checkbox" v-model="set.done" />
                   <div v-if="set.done"><FilledCheckIcon /></div>
                   <div v-else><EmptyCheckIcon /></div>
-                </div>
+                </label>
                 <div class="ms-1">
                   <DeleteIcon @click="$emit('removeSet', index, i)" />
                 </div>
