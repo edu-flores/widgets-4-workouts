@@ -100,7 +100,7 @@ watch(
 </script>
 
 <template>
-  <section class="h-100">
+  <section>
     <!-- Title -->
     <div class="mb-3">
       <h6><b>Analysis</b></h6>
@@ -109,7 +109,7 @@ watch(
     <div class="container-fluid">
       <div class="row gy-3 align-items-center">
         <!-- Donut Chart -->
-        <div class="col-12 col-lg-4">
+        <div class="col-12 col-lg-4 d-flex justify-content-center">
           <apexchart width="250" type="donut" :options="donutOptions" :series="donutSeries"></apexchart>
         </div>
         <div class="col-12 col-lg-8">
