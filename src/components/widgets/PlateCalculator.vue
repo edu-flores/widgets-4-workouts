@@ -17,7 +17,7 @@ const resize = () => input.value.style.width = input.value.value.length + 'ch';
       <h6><b>Plate Calculator</b></h6>
     </div>
     <!-- Content -->
-    <div class="container-fluis">
+    <div class="container-fluid">
       <div class="row align-items-center justify-content-between">
         <!-- Visual Representation -->
         <div id="barbell" class="col-12 col-sm-6 col-md-12 col-lg-6">

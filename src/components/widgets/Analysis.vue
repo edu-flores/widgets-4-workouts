@@ -109,11 +109,11 @@ watch(
     <div class="container-fluid">
       <div class="row gy-3 align-items-center">
         <!-- Donut Chart -->
-        <div class="col-12 col-lg-4 d-flex justify-content-center">
+        <div class="col-12 col-lg-4">
           <apexchart width="250" type="donut" :options="donutOptions" :series="donutSeries"></apexchart>
         </div>
         <div class="col-12 col-lg-8">
-          <div class="exercises row gy-1">
+          <div class="exercises row gy-1 justify-content-center border-start border-end">
             <!-- Exercise Highlights -->
             <div 
               class="col-12 col-sm-6 col-md-4"

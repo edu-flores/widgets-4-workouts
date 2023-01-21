@@ -22,51 +22,53 @@ const emits = defineEmits(['addSet', 'removeSet', 'addExercise', 'removeExercise
         <h6><b>Log</b></h6>
       </div>
       <!-- Content -->
-      <div :class="index !== 0 ? 'mt-4' : ''" v-for="(exercise, index) in exercises" :key="index">
-        <div class="d-flex justify-content-between mb-2">
-          <!-- Name -->
-          <input class="name text-input" type="text" maxlength="15" v-model="exercise.name" />
-          <!-- Delete -->
-          <MinusIcon @click="$emit('removeExercise', index)" />
+      <div class="container-fluid">
+        <div :class="index !== 0 ? 'mt-4' : ''" v-for="(exercise, index) in exercises" :key="index">
+          <div class="d-flex justify-content-between mb-2">
+            <!-- Name -->
+            <input class="name text-input" type="text" maxlength="15" v-model="exercise.name" />
+            <!-- Delete -->
+            <MinusIcon @click="$emit('removeExercise', index)" />
+          </div>
+          <hr>
+          <!-- Exercie Table -->
+          <table class="w-100 text-center mb-2">
+            <thead>
+              <tr>
+                <th class="w-25">SET</th>
+                <th class="w-25">WEIGHT</th>
+                <th class="w-25">REPS</th>
+                <th class="w-25">ACTION</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr v-for="(set, i) in exercise.sets" :key="i">
+                <td class="w-25">{{ i+1 }}</td>
+                <td class="w-25">
+                  <input class="set-input text-end" type="number" min="5" max="995" step="5" v-model="set.weight" />
+                  <span>&nbsp;lbs</span>
+                </td>
+                <td class="w-25">
+                  <input class="set-input" type="number" min="1" max="20" v-model="set.reps" />
+                </td>
+                <td class="d-flex justify-content-center m-auto w-25">
+                  <label class="me-1">
+                    <input type="checkbox" v-model="set.done" />
+                    <div v-if="set.done"><FilledCheckIcon /></div>
+                    <div v-else><EmptyCheckIcon /></div>
+                  </label>
+                  <div class="ms-1">
+                    <DeleteIcon @click="$emit('removeSet', index, i)" />
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <!-- New Set & Exercise -->
+          <button v-if="exercise.sets.length < 10" @click="$emit('addSet', index)" type="button" class="add-set w-100">+ Add Set</button>
         </div>
-        <hr>
-        <!-- Exercie Table -->
-        <table class="w-100 text-center mb-2">
-          <thead>
-            <tr>
-              <th class="w-25">SET</th>
-              <th class="w-25">WEIGHT</th>
-              <th class="w-25">REPS</th>
-              <th class="w-25">ACTION</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr v-for="(set, i) in exercise.sets" :key="i">
-              <td class="w-25">{{ i+1 }}</td>
-              <td class="w-25">
-                <input class="set-input text-end" type="number" min="5" max="995" step="5" v-model="set.weight" />
-                <span>&nbsp;lbs</span>
-              </td>
-              <td class="w-25">
-                <input class="set-input" type="number" min="1" max="20" v-model="set.reps" />
-              </td>
-              <td class="d-flex justify-content-center m-auto w-25">
-                <label class="me-1">
-                  <input type="checkbox" v-model="set.done" />
-                  <div v-if="set.done"><FilledCheckIcon /></div>
-                  <div v-else><EmptyCheckIcon /></div>
-                </label>
-                <div class="ms-1">
-                  <DeleteIcon @click="$emit('removeSet', index, i)" />
-                </div>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-        <!-- New Set & Exercise -->
-        <button v-if="exercise.sets.length < 10" @click="$emit('addSet', index)" type="button" class="add-set w-100">+ Add Set</button>
+        <button v-if="exercises.length < 10" @click="$emit('addExercise')" type="button" class="add-exercise w-100">+ Add Exercise</button>
       </div>
-      <button v-if="exercises.length < 10" @click="$emit('addExercise')" type="button" class="add-exercise w-100">+ Add Exercise</button>
     </div>
   </section>
 </template>
