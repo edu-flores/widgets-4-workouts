@@ -1,21 +1,45 @@
 <script setup>
-const boldText = () => {
-  let selection = window.getSelection();
-  let range = selection.getRangeAt(0);
-  console.log(window.getSelection().anchorNode.parentElement);
+// Props
+const props = defineProps({
+  range: Object
+});
+
+// Bold, italic, underline or strikethrough a text
+const editText = type => {
+  switch (type) {
+    case 'bold':
+      
+      break;
+    case 'italic':
+      
+      break;
+    case 'underline':
+      
+      break;
+    case 'strike':
+      
+      break;
+  }
+}
+
+// Reselect previously highlighted text
+const reselectText = () => {
+  const selection = window.getSelection();
+  selection.removeAllRanges();
+  selection.addRange(props.range);
 }
 </script>
 
 <template>
-  <div>
+  <div @click="getSelection">
     <!-- Bold -->
-    <button type="button" @click="boldText"><b>B</b></button>
+    <button type="button" @click="editText" @mouseup="reselectText"><b>B</b></button>
     <!-- Italic -->
-    <button type="button" @click="boldText"><i>I</i></button>
+    <button type="button" @click="editText" @mouseup="reselectText"><i>I</i></button>
     <!-- Underline -->
-    <button type="button" @click="boldText"><u>U</u></button>
+    <button type="button" @click="editText" @mouseup="reselectText"><u>U</u></button>
     <!-- Strikethrough -->
-    <button type="button" @click="boldText"><s>S</s></button>
+    <button type="button" @click="editText" @mouseup="reselectText"><s>S</s></button>
   </div>
 </template>
 

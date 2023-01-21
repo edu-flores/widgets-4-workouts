@@ -1,10 +1,20 @@
 <script setup>
+// Vue API
+import { ref } from 'vue';
+
 // Bottom text editor
 import Editor from '../Editor.vue';
+
+// Get range from highlighted text
+let range = ref({});
+const getSelection = () => {
+  let selection = window.getSelection();
+  range.value = selection.getRangeAt(0);
+}
 </script>
 
 <template>
-  <section class="h-100">
+  <section class="h-100" @mouseup="getSelection" @keyup="getSelection">
     <!-- Title -->
     <div class="mb-3">
       <h6><b>Notes</b></h6>
@@ -14,7 +24,7 @@ import Editor from '../Editor.vue';
       <div contenteditable="true"></div>
     </div>
     <!-- Styling -->
-    <Editor />
+    <Editor :range="range" />
   </section>
 </template>
 
