@@ -42,9 +42,9 @@ const calculatePlates = goalWeight => {
     </div>
     <!-- Content -->
     <div class="container-fluid">
-      <div class="row gy-3 align-items-center justify-content-between">
+      <div class="row mt-1 gy-3 align-items-center justify-content-between">
         <!-- Visual Representation -->
-        <div class="plates col-12 col-sm-6 col-md-12 col-lg-6 d-flex">
+        <div class="plates col-12 col-sm-6 col-md-12 col-lg-6">
           <div v-for="(plate, i) in calculatePlates(n)" :key="i">
             <WeightPlate :weight="plate" />
           </div>
@@ -65,6 +65,7 @@ const calculatePlates = goalWeight => {
 @import '../../assets/main.scss';
 
 .plates {
+  @include flexbox(row, center, center, 1px);
   height: 4rem;
 }
 

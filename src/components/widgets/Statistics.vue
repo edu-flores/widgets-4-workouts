@@ -84,9 +84,9 @@ watch(
       <h6><b>Statistics</b></h6>
     </div>
     <!-- Content -->
-    <div class="container-fluid">
-      <div class="row gy-3">
-        <div class="col-12 col-sm-6 col-lg-3" v-for="stat in stats" :key="stat.id">
+    <div class="container-fluid mt-4">
+      <div class="row">
+        <div class="col-12 col-sm-6 col-lg-3 py-1" v-for="stat in stats" :key="stat.id">
           <Stat :id="stat.id" :opacity="stat.opacity" :data="stat.data" :label="stat.label" />
         </div>
       </div>
