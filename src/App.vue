@@ -111,7 +111,10 @@ const removeExercise = exercise => exercises.value.splice(exercise, 1);
         </div>
         <!-- Analysis -->
         <div class="col-12 col-lg-8">
-          <Analysis class="widget" />
+          <Analysis
+            class="widget"
+            :exercises="exercises"
+          />
         </div>
         <!-- Goals -->
         <div class="col-12 col-lg-4">

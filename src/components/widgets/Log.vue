@@ -25,7 +25,7 @@ const emits = defineEmits(['addSet', 'removeSet', 'addExercise', 'removeExercise
       <div :class="index !== 0 ? 'mt-4' : ''" v-for="(exercise, index) in exercises" :key="index">
         <div class="d-flex justify-content-between mb-2">
           <!-- Name -->
-          <input class="name text-input" type="text" v-model="exercise.name" />
+          <input class="name text-input" type="text" maxlength="15" v-model="exercise.name" />
           <!-- Delete -->
           <MinusIcon @click="$emit('removeExercise', index)" />
         </div>
