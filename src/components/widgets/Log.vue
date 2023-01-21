@@ -5,6 +5,9 @@ import DeleteIcon from '../icons/IconDelete.vue';
 import FilledCheckIcon from '../icons/IconFilledCheck.vue';
 import EmptyCheckIcon from '../icons/IconEmptyCheck.vue';
 
+// Components
+import Empty from '../Empty.vue';
+
 // Props
 const props = defineProps({
   exercises: Array
@@ -67,6 +70,9 @@ const emits = defineEmits(['addSet', 'removeSet', 'addExercise', 'removeExercise
           <!-- New Set & Exercise -->
           <button v-if="exercise.sets.length < 10" @click="$emit('addSet', index)" type="button" class="add-set w-100">+ Add Set</button>
         </div>
+        <!-- No Exercises Yet -->
+        <Empty v-if="exercises.length === 0" message="There are no exercises yet." height="12rem" />
+        <!-- Add Exercise -->
         <button v-if="exercises.length < 10" @click="$emit('addExercise')" type="button" class="add-exercise w-100">+ Add Exercise</button>
       </div>
     </div>

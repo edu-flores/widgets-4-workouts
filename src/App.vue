@@ -52,6 +52,11 @@ const addExercise = () => {
         weight: 0,
         reps: 0,
         done: false
+      },
+      {
+        weight: 0,
+        reps: 0,
+        done: false
       }
     ]
   });

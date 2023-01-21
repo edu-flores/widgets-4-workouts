@@ -9,6 +9,7 @@ import EmptyCheckIcon from '../icons/IconEmptyCheck.vue';
 
 // Components
 import Goal from '../Goal.vue';
+import Empty from '../Empty.vue';
 
 // Data
 const goals = ref([
@@ -111,6 +112,8 @@ watch(
             :units="goal.units"
           />
         </div>
+        <!-- No Goals Selected -->
+        <Empty v-if="goals.filter(goal => goal.active).length === 0" message="No goals selected." height="8rem" />
       </div>
     </div>
     <!-- Edit Goals -->
