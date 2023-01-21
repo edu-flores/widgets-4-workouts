@@ -1,13 +1,21 @@
+<script setup>
+const boldText = () => {
+  let selection = window.getSelection();
+  let range = selection.getRangeAt(0);
+  console.log(window.getSelection().anchorNode.parentElement);
+}
+</script>
+
 <template>
   <div>
     <!-- Bold -->
-    <b>B</b>
+    <button type="button" @click="boldText"><b>B</b></button>
     <!-- Italic -->
-    <i>I</i>
+    <button type="button" @click="boldText"><i>I</i></button>
     <!-- Underline -->
-    <u>U</u>
-    <!-- Striketrough -->
-    <s>S</s>
+    <button type="button" @click="boldText"><u>U</u></button>
+    <!-- Strikethrough -->
+    <button type="button" @click="boldText"><s>S</s></button>
   </div>
 </template>
 
@@ -28,9 +36,27 @@ div {
   right: 0;
 }
 
+button {
+  border: 0;
+  background-color: inherit;
+}
+
 b, i, u, s {
   &:hover {
     cursor: pointer;
   }
+}
+
+.bold {
+  font-weight: bold;
+}
+.italic {
+  font-style: italic;
+}
+.underline {
+  text-decoration: underline;
+}
+.strike {
+  text-decoration: line-through;
 }
 </style>

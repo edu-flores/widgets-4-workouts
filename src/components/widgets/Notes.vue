@@ -32,15 +32,15 @@ section {
   scrollbar-width: none;
 }
 
-::-webkit-scrollbar {
-  display: none;
-}
-
 [contenteditable="true"] {
   height: 100%;
 
   &:focus {
     outline: none;
   }
+}
+
+::-webkit-scrollbar {
+  display: none;
 }
 </style>

@@ -1,6 +1,92 @@
 <script setup>
+// Vue API
+import { watch, ref } from 'vue';
+
 // Icons
-import PlusIcon from '../icons/IconPlus.vue';
+import EditIcon from '../icons/IconEdit.vue';
+import FilledCheckIcon from '../icons/IconFilledCheck.vue';
+import EmptyCheckIcon from '../icons/IconEmptyCheck.vue';
+
+// Components
+import Goal from '../Goal.vue';
+
+// Data
+const goals = ref([
+{
+    id: 0,
+    name: 'Volume',
+    progress: 0,
+    limit: 15000,
+    units: 'lbs',
+    active: true
+  },
+  {
+    id: 1,
+    name: 'Sets',
+    progress: 0,
+    limit: 15,
+    units: 'sets',
+    active: true
+  },
+  {
+    id: 2,
+    name: 'Reps',
+    progress: 0,
+    limit: 350,
+    units: 'reps',
+    active: true
+  },
+  {
+    id: 3,
+    name: 'Exercises',
+    progress: 0,
+    limit: 5,
+    units: 'exercises',
+    active: true
+  }
+]);
+let editMode = ref(false);
+
+// Props
+const props = defineProps({
+  exercises: Array
+});
+
+// Update goals when exercises changes
+watch(
+  props.exercises,
+  () => {
+    // Volume
+    const totalVolume = props.exercises.reduce((totalVolume, exercise) => {
+      const exerciseVolume = exercise.sets.reduce((volume, set) => {
+          return volume + (set.done ? set.weight * set.reps : 0);
+      }, 0);
+      return totalVolume + exerciseVolume;
+    }, 0);
+    goals.value[0].progress = totalVolume;
+
+    // Sets
+    const totalSets = props.exercises.reduce((totalSets, exercise) => {
+      const exerciseSets = exercise.sets.reduce((setCount, set) => {
+        return setCount + (set.done ? 1 : 0);
+      }, 0);
+      return totalSets + exerciseSets;
+    }, 0);
+    goals.value[1].progress = totalSets;
+    
+    // Reps
+    const totalReps = props.exercises.reduce((totalReps, exercise) => {
+      const exerciseReps = exercise.sets.reduce((reps, set) => {
+        return reps + (set.done ? set.reps : 0);
+      }, 0);
+      return totalReps + exerciseReps;
+    }, 0);
+    goals.value[2].progress = totalReps;
+    
+    // Exercises
+    goals.value[3].progress = props.exercises.length;
+  }
+);
 </script>
 
 <template>
@@ -11,28 +97,40 @@ import PlusIcon from '../icons/IconPlus.vue';
     </div>
     <!-- Content -->
     <div class="container-fluid">
-      <div class="row">
+      <div class="bars row mt-3">
         <!-- Progress Bars -->
-        <div class="col-12 col-sm-6 col-lg-12">
-          <p class="goal"><b>Total Volume</b></p>
-          <progress class="w-100" value="32" max="100"></progress>
-          <div class="text-end">
-            <span>2,134 / 3,000 lbs</span>
-          </div>
-        </div>
-        <div class="col-12 col-sm-6 col-lg-12">
-          <p class="goal"><b>Repetitions</b></p>
-          <progress class="w-100" value="62" max="100"></progress>
-          <div class="text-end">
-            <span>123 / 180 reps</span>
-          </div>
+        <div
+          class="col-12 col-sm-6 col-lg-12"
+          v-for="goal in goals.filter(goal => goal.active)"
+          :key="goal.id"
+        >
+          <Goal
+            :name="goal.name"
+            :progress="goal.progress"
+            :limit="goal.limit"
+            :units="goal.units"
+          />
         </div>
       </div>
     </div>
     <!-- Edit Goals -->
-    <div class="add mt-3">
-      <PlusIcon />
-      <span>New Goal</span>
+    <div v-if="!editMode" class="edit mt-5" @click="editMode = true">
+      <EditIcon />
+      <span>Edit</span>
+    </div>
+    <div class="row gy-1 mt-1" v-else>
+      <div class="col-6 col-sm-3 col-lg-6" v-for="goal in goals" :key="goal.id">
+        <div>
+          <label class="d-flex me-1">
+            <input type="checkbox" v-model="goal.active" />
+            <div v-if="goal.active"><FilledCheckIcon /></div>
+            <div v-else><EmptyCheckIcon /></div>
+            <span>&nbsp; {{ goal.name }}</span>
+          </label>
+        </div>
+      </div>
+      <!-- Done -->
+      <button class="mt-3" type="button" @click="editMode = false">✓ Done</button>
     </div>
   </section>
 </template>
@@ -40,18 +138,37 @@ import PlusIcon from '../icons/IconPlus.vue';
 <style lang="scss" scoped>
 @import '../../assets/main.scss';
 
-p {
-  color: $darker;
-  font-size: medium;
-  margin-bottom: -0.2rem;
+section {
+  min-height: 21rem;
 }
 
-span {
-  font-size: small;
+.bars {
+  height: 8.5rem;
+  overflow-y: auto;
 }
 
-.add {
+.edit {
   @include flexbox(column, center, center);
   gap: 0.5rem;
+}
+
+input {
+  all: unset;
+}
+
+button {
+  border: 0;
+  border-radius: 5px;
+  padding: 0.2rem 0;
+  font-size: small;
+
+  &:active {
+    transform: translateY(1px);
+    filter: brightness(0.8);
+  }
+}
+
+::-webkit-scrollbar {
+  display: none;
 }
 </style>

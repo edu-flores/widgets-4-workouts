@@ -3,13 +3,18 @@
 import ResetIcon from './icons/IconReset.vue';
 import ExportIcon from './icons/IconExport.vue';
 import HelpIcon from './icons/IconHelp.vue';
+
+const reload = () => {
+  if (confirm('Sure?'));
+    window.location.reload();
+}
 </script>
 
 <template>
   <footer class="container-fluid">
     <div class="row align-items-center py-4 py-sm-2 px-4 gy-3 gy-sm-0">
       <!-- Component cleanup -->
-      <div class="col-6 text-end">
+      <div class="col-6 text-end" @click="reload">
         <ResetIcon class="me-2 mb-1" />
         <span>Reset</span>
       </div>

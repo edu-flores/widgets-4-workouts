@@ -1,62 +1,89 @@
 <script setup>
 // Icons
-import StopwatchIcon from '../icons/IconStopwatch.vue';
+import MinusIcon from '../icons/IconMinus.vue';
+import DeleteIcon from '../icons/IconDelete.vue';
 import FilledCheckIcon from '../icons/IconFilledCheck.vue';
 import EmptyCheckIcon from '../icons/IconEmptyCheck.vue';
+
+// Props
+const props = defineProps({
+  exercises: Array
+});
+
+// Events
+const emits = defineEmits(['addSet', 'removeSet', 'addExercise', 'removeExercise']);
 </script>
 
 <template>
   <section>
-    <!-- Title -->
-    <div class="mb-3">
-      <h6><b>Log</b></h6>
-    </div>
-    <!-- Content -->
-    <div>
-      <div class="mb-2">
-        <span><b>Bench Press</b></span>
-        <StopwatchIcon class="ms-2 mb-1" />
+    <div class="container-overflow">
+      <!-- Title -->
+      <div class="mb-3">
+        <h6><b>Log</b></h6>
       </div>
-      <!-- Exercie Table -->
-      <table class="w-100 text-center">
-        <thead>
-          <tr>
-            <th class="w-25">SET</th>
-            <th class="w-25">WEIGHT</th>
-            <th class="w-25">REPS</th>
-            <th class="w-25">DONE</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td class="w-25">1</td>
-            <td class="w-25">170 lbs</td>
-            <td class="w-25">8</td>
-            <td class="w-25"><FilledCheckIcon /></td>
-          </tr>
-          <tr>
-            <td class="w-25">2</td>
-            <td class="w-25">170 lbs</td>
-            <td class="w-25">6</td>
-            <td class="w-25"><EmptyCheckIcon /></td>
-          </tr>
-          <tr>
-            <td class="w-25">3</td>
-            <td class="w-25">170 lbs</td>
-            <td class="w-25">4</td>
-            <td class="w-25"><EmptyCheckIcon /></td>
-          </tr>
-        </tbody>
-      </table>
-      <!-- New Set & Exercise -->
-      <button type="button" class="add-set w-100">+ Add Set</button>
-      <button type="button" class="add-exercise w-100">+ Add Exercise</button>
+      <!-- Content -->
+      <div class="container-fluid">
+        <div :class="index !== 0 ? 'mt-4' : ''" v-for="(exercise, index) in exercises" :key="index">
+          <div class="d-flex justify-content-between mb-2">
+            <!-- Name -->
+            <input class="name text-input" type="text" maxlength="15" v-model="exercise.name" />
+            <!-- Delete -->
+            <MinusIcon @click="$emit('removeExercise', index)" />
+          </div>
+          <hr>
+          <!-- Exercie Table -->
+          <table class="w-100 text-center mb-2">
+            <thead>
+              <tr>
+                <th class="w-25">SET</th>
+                <th class="w-25">WEIGHT</th>
+                <th class="w-25">REPS</th>
+                <th class="w-25">ACTION</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr v-for="(set, i) in exercise.sets" :key="i">
+                <td class="w-25">{{ i+1 }}</td>
+                <td class="w-25">
+                  <input class="set-input text-end" type="number" min="5" max="995" step="5" v-model="set.weight" />
+                  <span>&nbsp;lbs</span>
+                </td>
+                <td class="w-25">
+                  <input class="set-input" type="number" min="1" max="20" v-model="set.reps" />
+                </td>
+                <td class="d-flex justify-content-center m-auto w-25">
+                  <label class="me-1">
+                    <input type="checkbox" v-model="set.done" />
+                    <div v-if="set.done"><FilledCheckIcon /></div>
+                    <div v-else><EmptyCheckIcon /></div>
+                  </label>
+                  <div class="ms-1">
+                    <DeleteIcon @click="$emit('removeSet', index, i)" />
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <!-- New Set & Exercise -->
+          <button v-if="exercise.sets.length < 10" @click="$emit('addSet', index)" type="button" class="add-set w-100">+ Add Set</button>
+        </div>
+        <button v-if="exercises.length < 10" @click="$emit('addExercise')" type="button" class="add-exercise w-100">+ Add Exercise</button>
+      </div>
     </div>
   </section>
 </template>
 
 <style lang="scss" scoped>
 @import '../../assets/main.scss';
+
+.container-overflow {
+  height: 16.5rem;
+  overflow-y: auto;
+}
+
+.name {
+  color: $darker;
+}
 
 span {
   color: $darker;
@@ -98,5 +125,37 @@ button {
 .add-exercise {
   background-color: $darker;
   color: $lighter;
+}
+
+input {
+  all: unset;
+}
+
+.text-input {
+  font-weight: bold;
+  width: 10rem;
+}
+
+.timer-input {
+  width: 1.5rem;
+}
+
+.set-input {
+  width: 2rem;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number] {
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+
+::-webkit-scrollbar {
+  display: none;
 }
 </style>

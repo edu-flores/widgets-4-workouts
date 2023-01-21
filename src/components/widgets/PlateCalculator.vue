@@ -1,31 +1,60 @@
 <script setup>
-// Icons
-import MenuIcon from '../icons/IconMenu.vue';
+// Vue API
+import { ref } from 'vue';
+
+// Components
+import WeightPlate from '../WeightPlate.vue';
+
+// Data
+let n = ref(185);
+
+// Resize input while typing
+const input = ref(null);
+const resize = () => input.value.style.width = input.value.value.length + 'ch';
+
+// Look for a plate calculation solution (greedy algorithm)
+const availablePlates = [45, 35, 25, 10, 5, 2.5];
+const calculatePlates = goalWeight => {
+  let currentWeight = 0;
+  let ans = [];
+
+  goalWeight -= 45;  // Subtract barbell weight
+  let i = 0;
+  while (currentWeight < goalWeight) {
+    let plate = availablePlates[i];
+    
+    // Try to add heaviest available plate
+    if (currentWeight + (plate * 2) <= goalWeight) {
+      ans.push(plate);
+      currentWeight += plate * 2;
+    } else i++;
+  }
+
+  return ans;
+}
 </script>
 
 <template>
   <section>
-    <!-- Menu -->
-    <div class="menu text-end">
-      <MenuIcon />
-    </div>
     <!-- Title -->
     <div>
       <h6><b>Plate Calculator</b></h6>
     </div>
     <!-- Content -->
-    <div class="container-fluis">
-      <div class="row align-items-center justify-content-between">
+    <div class="container-fluid">
+      <div class="row mt-1 gy-3 align-items-center justify-content-between">
         <!-- Visual Representation -->
-        <div id="barbell" class="col-12 col-sm-6 col-md-12 col-lg-6">
-          <div id="inner-bar"></div>
-          <div id="separation"></div>
-          <div id="outer-bar"></div>
+        <div class="plates col-12 col-sm-6 col-md-12 col-lg-6">
+          <div v-for="(plate, i) in calculatePlates(n)" :key="i">
+            <WeightPlate :weight="plate" />
+          </div>
         </div>
         <!-- Text -->
         <div class="col-12 col-sm-6 col-md-12 col-lg-6 text-center">
-          <p class="mb-0"><b>185 lbs</b></p>
-          <span>= 70 on each side</span>
+          <p class="mb-0">
+            <b><input class="text-end" @input="resize" ref="input" type="number" min="45" max="995" step="5" v-model="n" /> lbs</b>
+          </p>
+          <span>{{ calculatePlates(n).reduce((a, b) => a + b, 0) }} lbs per side</span>
         </div>
       </div>
     </div>
@@ -35,44 +64,29 @@ import MenuIcon from '../icons/IconMenu.vue';
 <style lang="scss" scoped>
 @import '../../assets/main.scss';
 
-.menu {
-  margin-top: -1.5rem;
-  margin-right: -1rem;
-}
-
-#barbell {
-  position: relative;
-  margin-left: -2rem;
-}
-
-#inner-bar {
-  background-color: $light;
-  width: 7rem;
-  height: 0.4rem;
-}
-
-#separation {
-  position: relative;
-  top: -0.8rem;
-  left: 3rem;
-  background-color: $light;
-  width: 0.5rem;
-  height: 1.2rem;
-  border-radius: 3px;
-}
-
-#outer-bar {
-  position: relative;
-  top: -1.7rem;
-  left: 3rem;
-  background-color: $light;
-  width: 7rem;
-  height: 0.6rem;
-  border-radius: 3px;
+.plates {
+  @include flexbox(row, center, center, 1px);
+  height: 4rem;
 }
 
 p {
   color: $darker;
   font-size: 1.6rem;
+}
+
+input {
+  all: unset;
+  width: 3ch;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number] {
+  -moz-appearance: textfield;
+  appearance: textfield;
 }
 </style>

@@ -1,7 +1,13 @@
 <script setup>
+// Vue API
+import { watch, ref } from 'vue';
+
+// Components
+import ExerciseAnalysis from '../ExerciseAnalysis.vue';
+
 // Donut chart - Volume per exercise
-const donutOptions = {
-  labels: ['Bench Press', 'Rows', 'Pull Ups', 'Overhead Press'],
+const donutOptions = ref({
+  labels: ['Empty'],
   dataLabels: {
     enabled: false
   },
@@ -12,26 +18,89 @@ const donutOptions = {
     pie: {
       expandOnClick: false,
       donut: {
-        size: '60%'
+        size: '65%',
+        labels: {
+          show: true,
+          name: {
+            fontSize: '14px',
+            fontFamily: 'Inter'
+          },
+          value: {
+            fontSize: '18px',
+            fontFamily: 'Inter',
+            formatter: val => Math.round(val).toLocaleString('en-US') + ' lbs'
+          }
+        }
       }
     }
   },
   fill: {
-    colors: ['#fba300', '#4e4a55']
+    colors: ['#35b9d3', '#4e4a55']
   },
-  colors: ['#fba300', '#4e4a55'],
+  colors: ['#35b9d3', '#4e4a55'],
   tooltip: {
-    enabled: true,
-    y: {
-      formatter: val => val + ' lbs'
+    enabled: false
+  }
+});
+let donutSeries = ref([0.1]);
+
+// Props
+const props = defineProps({
+  exercises: Array
+});
+
+// Calculations
+const calculateVolume = exercise => {  // Vol
+  return exercise.sets.reduce((volume, set) => {
+    return volume + (set.done ? set.weight * set.reps : 0);
+  }, 0);
+}
+const calculateSets = exercise => {  // Sets
+  return exercise.sets.reduce((setCount, set) => {
+    return setCount + (set.done ? 1 : 0);
+  }, 0);
+}
+const calculateReps = exercise => {  // Reps
+  return exercise.sets.reduce((reps, set) => {
+    return reps + (set.done ? set.reps : 0);
+  }, 0);
+}
+const calculateORM = exercise => {  // 1RM
+  return parseInt(Math.max.call(Math, ...exercise.sets.map(set => {
+    return (set.done ? set.weight / (1.0278 - 0.0278 * set.reps) : 0);
+  })));
+}
+
+// Update chart
+watch(
+  props.exercises,
+  () => {
+    // Clear chart
+    donutOptions.value.labels.splice(0, donutOptions.value.labels.length);
+    donutSeries.value.splice(0, donutSeries.value.length);
+
+    // Push new data to the chart
+    donutOptions.value.labels.splice(0, donutOptions.value.labels.length);
+    donutSeries.value.splice(0, donutSeries.value.length);
+    props.exercises.forEach(exercise => {
+      donutOptions.value.labels.push(exercise.name);
+      donutSeries.value.push(calculateVolume(exercise));
+    });
+
+    // No volume yet
+    if (donutSeries.value.reduce((a, b) => a + b, 0) === 0) {
+      donutOptions.value.labels.splice(0, donutOptions.value.labels.length);
+      donutSeries.value.splice(0, donutSeries.value.length);
+      donutOptions.value.labels.push('Empty');
+      donutSeries.value.push(0.1);
+      return;
     }
   }
-}
-const donutSeries = [25, 10, 50, 30];
+);
 </script>
 
 <template>
-  <section class="h-100">
+  <section>
     <!-- Title -->
     <div class="mb-3">
       <h6><b>Analysis</b></h6>
@@ -44,34 +113,19 @@ const donutSeries = [25, 10, 50, 30];
           <apexchart width="250" type="donut" :options="donutOptions" :series="donutSeries"></apexchart>
         </div>
         <div class="col-12 col-lg-8">
-          <div class="row">
+          <div class="exercises row gy-1 justify-content-center border-start border-end">
             <!-- Exercise Highlights -->
-            <div class="col-12 col-sm-6 col-md-4">
-              <p class="text-center"><b>Bench Press</b></p>
-              <ul>
-                <li><b>Vol</b>: 200 lbs</li>
-                <li><b>Sets</b>: 3</li>
-                <li><b>Reps</b>: 30</li>
-                <li><b>1RM</b>: 140 lbs</li>
-              </ul>
-            </div>
-            <div class="col-12 col-sm-6 col-md-4">
-              <p class="text-center"><b>Pull Ups</b></p>
-              <ul>
-                <li><b>Vol</b>: 200 lbs</li>
-                <li><b>Sets</b>: 3</li>
-                <li><b>Reps</b>: 30</li>
-                <li><b>1RM</b>: 140 lbs</li>
-              </ul>
-            </div>
-            <div class="col-12 col-sm-6 col-md-4">
-              <p class="text-center"><b>Rows</b></p>
-              <ul>
-                <li><b>Vol</b>: 200 lbs</li>
-                <li><b>Sets</b>: 3</li>
-                <li><b>Reps</b>: 30</li>
-                <li><b>1RM</b>: 140 lbs</li>
-              </ul>
+            <div 
+              class="col-12 col-sm-6 col-md-4"
+              v-for="exercise in exercises" :key="exercise.name"
+            >
+              <ExerciseAnalysis
+                :name="exercise.name"
+                :volume="calculateVolume(exercise)"
+                :sets="calculateSets(exercise)"
+                :reps="calculateReps(exercise)"
+                :orm="calculateORM(exercise)"
+              />
             </div>
           </div>
         </div>
@@ -87,11 +141,12 @@ section {
   display: grid;
 }
 
-p {
-  color: $darker;
+.exercises {
+  height: 10rem;
+  overflow-y: auto;
+}
 
-  b {
-    font-size: large;
-  }
+::-webkit-scrollbar {
+  display: none;
 }
 </style>

@@ -1,4 +1,7 @@
 <script setup>
+// Vue API
+import { ref } from 'vue';
+
 // Header & Footer
 import Header from './components/Header.vue';
 import Footer from './components/Footer.vue';
@@ -13,6 +16,49 @@ import Log from './components/widgets/Log.vue';
 import Notes from './components/widgets/Notes.vue';
 import Analysis from './components/widgets/Analysis.vue';
 import Goals from './components/widgets/Goals.vue';
+
+// Exercises for Log component (main data)
+const exercises = ref([
+  {
+    name: 'Bench Press',
+    sets: [
+      {
+        weight: 0,
+        reps: 0,
+        done: false
+      }
+    ]
+  }
+]);
+
+// Push a set to an exercise
+const addSet = exercise => {
+  exercises.value[exercise].sets.push({
+    weight: 0,
+    reps: 0,
+    done: false
+  });
+}
+
+// Remove set from an exercise
+const removeSet = (exercise, set) => exercises.value[exercise].sets.splice(set, 1);
+
+// Push an exercise to the main array
+const addExercise = () => {
+  exercises.value.push({
+    name: 'Exercise #' + String(exercises.value.length + 1),
+    sets: [
+      {
+        weight: 0,
+        reps: 0,
+        done: false
+      }
+    ]
+  });
+}
+
+// Remove an exercise from the main array
+const removeExercise = exercise => exercises.value.splice(exercise, 1);
 </script>
 
 <template>
@@ -23,7 +69,10 @@ import Goals from './components/widgets/Goals.vue';
       <div class="row gy-4">
         <!-- Statistics -->
         <div class="col-12 col-md-8">
-          <Statistics class="widget" />
+          <Statistics
+            class="widget"
+            :exercises="exercises"
+          />
         </div>
         <!-- Plate Calculator -->
         <div class="col-12 col-md-4">
@@ -47,7 +96,14 @@ import Goals from './components/widgets/Goals.vue';
         </div>
         <!-- Log -->
         <div class="col-12 col-md-8 col-lg-6">
-          <Log class="widget" />
+          <Log 
+            class="widget"
+            :exercises="exercises"
+            @add-set="addSet"
+            @remove-set="removeSet"
+            @add-exercise="addExercise"
+            @remove-exercise="removeExercise"
+          />
         </div>
         <!-- Notes -->
         <div class="col-12 col-md-4 col-lg-2">
@@ -55,11 +111,17 @@ import Goals from './components/widgets/Goals.vue';
         </div>
         <!-- Analysis -->
         <div class="col-12 col-lg-8">
-          <Analysis class="widget" />
+          <Analysis
+            class="widget"
+            :exercises="exercises"
+          />
         </div>
         <!-- Goals -->
         <div class="col-12 col-lg-4">
-          <Goals class="widget" />
+          <Goals
+            class="widget"
+            :exercises="exercises"
+          />
         </div>
       </div>
     </main>
