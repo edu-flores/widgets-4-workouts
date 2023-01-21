@@ -88,7 +88,7 @@ watch(
     });
 
     // No volume yet
-    if (donutSeries.value.reduce((a, b) => a + b) === 0) {
+    if (donutSeries.value.reduce((a, b) => a + b, 0) === 0) {
       donutOptions.value.labels.splice(0, donutOptions.value.labels.length);
       donutSeries.value.splice(0, donutSeries.value.length);
       donutOptions.value.labels.push('Empty');
