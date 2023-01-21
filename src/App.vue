@@ -46,7 +46,7 @@ const removeSet = (exercise, set) => exercises.value[exercise].sets.splice(set, 
 // Push an exercise to the main array
 const addExercise = () => {
   exercises.value.push({
-    name: 'New Exercise',
+    name: 'Exercise #' + String(exercises.value.length + 1),
     sets: [
       {
         weight: 0,

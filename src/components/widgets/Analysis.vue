@@ -6,7 +6,7 @@ import { watch, ref } from 'vue';
 import ExerciseAnalysis from '../ExerciseAnalysis.vue';
 
 // Donut chart - Volume per exercise
-const donutOptions = {
+const donutOptions = ref({
   labels: ['Empty'],
   dataLabels: {
     enabled: false
@@ -41,50 +41,62 @@ const donutOptions = {
   tooltip: {
     enabled: false
   }
-}
-const donutSeries = [0.1];
+});
+let donutSeries = ref([0.1]);
 
 // Props
 const props = defineProps({
   exercises: Array
 });
 
-// Update chart
-watch(
-  props.exercises,
-  () => {
-    // No exercises yet
-    if (props.exercises.length === 0) {
-      donutOptions.series = ['Empty'];
-      donutSeries = [0.1];
-      return;
-    }
-
-    // Push data to the chart
-  }
-);
-
 // Calculations
-const calculateVolume = exercise => {
+const calculateVolume = exercise => {  // Vol
   return exercise.sets.reduce((volume, set) => {
     return volume + (set.done ? set.weight * set.reps : 0);
   }, 0);
 }
-const calculateSets = exercise => {
+const calculateSets = exercise => {  // Sets
   return exercise.sets.reduce((setCount, set) => {
     return setCount + (set.done ? 1 : 0);
   }, 0);
 }
-const calculateReps = exercise => {
+const calculateReps = exercise => {  // Reps
   return exercise.sets.reduce((reps, set) => {
     return reps + (set.done ? set.reps : 0);
   }, 0);
 }
-const calculateORM = exercise => {
+const calculateORM = exercise => {  // 1RM
   return parseInt(Math.max.call(Math, ...exercise.sets.map(set => {
     return (set.done ? set.weight / (1.0278 - 0.0278 * set.reps) : 0);
   })));
 }
+
+// Update chart
+watch(
+  props.exercises,
+  () => {
+    // Clear chart
+    donutOptions.value.labels.splice(0, donutOptions.value.labels.length);
+    donutSeries.value.splice(0, donutSeries.value.length);
+
+    // Push new data to the chart
+    donutOptions.value.labels.splice(0, donutOptions.value.labels.length);
+    donutSeries.value.splice(0, donutSeries.value.length);
+    props.exercises.forEach(exercise => {
+      donutOptions.value.labels.push(exercise.name);
+      donutSeries.value.push(calculateVolume(exercise));
+    });
+
+    // No volume yet
+    if (donutSeries.value.reduce((a, b) => a + b) === 0) {
+      donutOptions.value.labels.splice(0, donutOptions.value.labels.length);
+      donutSeries.value.splice(0, donutSeries.value.length);
+      donutOptions.value.labels.push('Empty');
+      donutSeries.value.push(0.1);
+      return;
+    }
+  }
+);
 </script>
 
 <template>
