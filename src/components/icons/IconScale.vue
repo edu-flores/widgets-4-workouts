@@ -10,13 +10,5 @@
 svg {
   fill: $darker;
   width: 20px;
-
-  &:hover {
-    cursor: pointer;
-  }
-
-  &:active {
-    filter: brightness(2);
-  }
 }
 </style>
