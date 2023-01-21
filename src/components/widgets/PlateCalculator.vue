@@ -28,6 +28,9 @@ const calculatePlates = goalWeight => {
       ans.push(plate);
       currentWeight += plate * 2;
     } else i++;
+
+    // Prevent infinite loop
+    if (i === availablePlates.length) break;
   }
 
   return ans;
@@ -52,7 +55,7 @@ const calculatePlates = goalWeight => {
         <!-- Text -->
         <div class="col-12 col-sm-6 col-md-12 col-lg-6 text-center">
           <p class="mb-0">
-            <b><input class="text-end" @input="resize" ref="input" type="number" min="45" max="995" step="5" v-model="n" /> lbs</b>
+            <b><input class="text-end" @input="resize" ref="input" type="number" min="50" max="995" step="5" v-model="n" /> lbs</b>
           </p>
           <span>{{ calculatePlates(n).reduce((a, b) => a + b, 0) }} lbs per side</span>
         </div>
