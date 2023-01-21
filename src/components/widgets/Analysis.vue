@@ -113,7 +113,7 @@ watch(
           <apexchart width="250" type="donut" :options="donutOptions" :series="donutSeries"></apexchart>
         </div>
         <div class="col-12 col-lg-8">
-          <div class="exercises row">
+          <div class="exercises row gy-1">
             <!-- Exercise Highlights -->
             <div 
               class="col-12 col-sm-6 col-md-4"
