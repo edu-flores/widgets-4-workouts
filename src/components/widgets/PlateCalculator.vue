@@ -40,11 +40,11 @@ const calculatePlates = goalWeight => {
 <template>
   <section>
     <!-- Title -->
-    <div>
+    <div class="mb-auto">
       <h6><b>Plate Calculator</b></h6>
     </div>
     <!-- Content -->
-    <div class="container-fluid">
+    <div class="container-fluid mb-auto">
       <div class="row mt-1 gy-3 align-items-center justify-content-between">
         <!-- Visual Representation -->
         <div class="plates col-12 col-sm-6 col-md-12 col-lg-6">

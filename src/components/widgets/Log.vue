@@ -21,11 +21,11 @@ const emits = defineEmits(['addSet', 'removeSet', 'addExercise', 'removeExercise
   <section>
     <div class="container-overflow">
       <!-- Title -->
-      <div class="mb-3">
+      <div class="text-center mb-auto">
         <h6><b>Log</b></h6>
       </div>
       <!-- Content -->
-      <div class="container-fluid">
+      <div class="container-fluid mb-auto">
         <div :class="index !== 0 ? 'mt-4' : ''" v-for="(exercise, index) in exercises" :key="index">
           <div class="d-flex justify-content-between mb-2">
             <!-- Name -->
@@ -83,6 +83,7 @@ const emits = defineEmits(['addSet', 'removeSet', 'addExercise', 'removeExercise
 @import '../../assets/main.scss';
 
 .container-overflow {
+  width: 100%;
   height: 16.5rem;
   overflow-y: auto;
 }

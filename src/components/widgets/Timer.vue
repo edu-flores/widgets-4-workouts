@@ -102,7 +102,7 @@ const resetTimer = () => {
         <input type="number" min="0" max="59" v-model="timer.seconds" :disabled="started" />
       </b>
     </p>
-    <progress class="w-100" :value="progressNow || 1" :max="progressMax || 1"></progress>
+    <progress class="mt-2 w-100" :value="progressNow || 1" :max="progressMax || 1"></progress>
     <!-- Timer Controls -->
     <div class="icons d-flex mt-2">
       <div @click="togglePlay">

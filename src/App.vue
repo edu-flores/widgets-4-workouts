@@ -132,7 +132,8 @@ const removeExercise = exercise => exercises.value.splice(exercise, 1);
   margin: auto;
 }
 
-.widget {
+.widget {  
+  @include flexbox(column, center, center);
   background-color: white;
   border: 1px solid $lighter;
   border-radius: 6px;

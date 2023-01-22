@@ -80,7 +80,7 @@ let showHelp = ref(false);
   <Modal v-if="showHelp">
     <!-- Help -->
     <div class="help">
-      <h5>About</h5>
+      <h5 class="mb-4">About</h5>
       <p>
         <i><b>Widgets 4 Workouts</b></i> is a training helper that lets you log your daily workouts, while having available useful information about the way you train.
       </p>
@@ -112,7 +112,7 @@ footer {
   max-width: 70vw;
 
   h5 {
-   color: $darker; 
+   color: $darker;
   }
 
   button {

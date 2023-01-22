@@ -16,11 +16,11 @@ const getSelection = () => {
 <template>
   <section class="h-100" @mouseup="getSelection" @keyup="getSelection">
     <!-- Title -->
-    <div class="mb-3">
+    <div class="mb-auto">
       <h6><b>Notes</b></h6>
     </div>
     <!-- Edit Section -->
-    <div class="edit-container">
+    <div class="edit-container mb-auto">
       <div contenteditable="true">
         Have a <i>great</i> workout!
       </div>

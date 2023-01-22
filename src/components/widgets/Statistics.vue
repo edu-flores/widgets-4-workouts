@@ -80,13 +80,13 @@ watch(
 <template>
   <section>
     <!-- Title -->
-    <div class="mb-3">
+    <div class="mb-auto">
       <h6><b>Statistics</b></h6>
     </div>
     <!-- Content -->
-    <div class="container-fluid mt-4">
-      <div class="row">
-        <div class="col-12 col-sm-6 col-lg-3 py-1" v-for="stat in stats" :key="stat.id">
+    <div class="container-fluid mb-auto">
+      <div class="row gy-2">
+        <div class="col-12 col-sm-6 col-lg-3" v-for="stat in stats" :key="stat.id">
           <Stat :id="stat.id" :opacity="stat.opacity" :data="stat.data" :label="stat.label" />
         </div>
       </div>

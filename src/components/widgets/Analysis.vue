@@ -103,11 +103,11 @@ watch(
 <template>
   <section>
     <!-- Title -->
-    <div class="mb-3">
+    <div class="mb-auto">
       <h6><b>Analysis</b></h6>
     </div>
     <!-- Content -->
-    <div class="container-fluid">
+    <div class="container-fluid mb-auto">
       <div class="row gy-3 align-items-center">
         <!-- Donut Chart -->
         <div class="col-12 col-lg-4 d-flex justify-content-center">
@@ -139,10 +139,6 @@ watch(
 
 <style lang="scss" scoped>
 @import '../../assets/main.scss';
-
-section {
-  display: grid;
-}
 
 .exercises {
   height: 10rem;
