@@ -1,20 +1,27 @@
 <script setup>
+// Vue API
+import { ref } from 'vue';
+
 // Icons
 import ResetIcon from './icons/IconReset.vue';
 import ExportIcon from './icons/IconExport.vue';
 import HelpIcon from './icons/IconHelp.vue';
 
-const reload = () => {
-  if (confirm('Sure?'));
-    window.location.reload();
-}
+// Components
+import Modal from './Modal.vue';
+
+// Reload whole page
+const reload = () => window.location.reload();
+
+// Data
+let showReset = ref(false);
 </script>
 
 <template>
   <footer class="container-fluid">
     <div class="row align-items-center py-4 py-sm-2 px-4 gy-3 gy-sm-0">
       <!-- Component cleanup -->
-      <div class="col-6 text-end" @click="reload">
+      <div class="col-6 text-end" @click="showReset = true">
         <ResetIcon class="me-2 mb-1" />
         <span>Reset</span>
       </div>
@@ -29,6 +36,16 @@ const reload = () => {
       </div>
     </div>
   </footer>
+  <!-- Modals -->
+  <Modal v-if="showReset">
+    <div class="reset text-center">
+      <h5><b>Are you sure you want to <br> reset all the widgets?</b></h5>
+      <div class="mt-4">
+        <button class="me-2" @click="showReset = false">No</button>
+        <button class="ms-2" @click="reload">Yes</button>
+      </div>
+    </div>
+  </Modal>
 </template>
 
 <style lang="scss" scoped>
@@ -45,5 +62,27 @@ footer {
 
 .row {
   min-height: inherit;
+}
+
+.reset {
+  @include flexbox(column, center, center);
+  width: 20rem;
+  height: 10rem;
+
+  h5 {
+   color: $darker; 
+  }
+
+  button {
+    margin-top: 0.5rem;
+    border: 0;
+    border-radius: 5px;
+    padding: 0.5rem 2rem;
+
+    &:active {
+      transform: translateY(1px);
+      filter: brightness(0.8);
+    }
+  }
 }
 </style>

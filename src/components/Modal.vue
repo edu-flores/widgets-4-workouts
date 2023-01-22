@@ -18,7 +18,7 @@
   top: 0;
   left: 0;
   z-index: 10;
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(8px);
 }
 
 .modal-content {
