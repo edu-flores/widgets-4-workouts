@@ -51,7 +51,7 @@ const saveSettings = () => {
       </div>
       <!-- Settings -->
       <div class="order-3 col-6 col-md-3 text-end" @click="openModal">
-        <span>Settings</span>
+        <span class="cursor">Settings</span>
         <SettingsIcon class="ms-2 mb-1" />
       </div>
     </div>
@@ -85,6 +85,10 @@ header {
   width: 100%;
   min-height: 4rem;
   box-shadow: rgba(33, 35, 38, 0.1) 0px 10px 10px -10px;
+}
+
+.cursor {
+  cursor: pointer;
 }
 
 input {
