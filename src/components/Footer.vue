@@ -82,7 +82,7 @@ let showHelp = ref(false);
     <div class="help">
       <h5 class="mb-4">About</h5>
       <p>
-        <i><b>Widgets 4 Workouts</b></i> is a training helper that lets you log your daily workouts, while having available useful information about the way you train.
+        <i><b>Widgets 4 Workouts</b></i> is a training helper that lets you log your daily workouts, while providing useful information about the way you train.
       </p>
       <span class="text-center">Made with <HeartIcon /> <br> by <a href="https://edu-flores.github.io/" target="_blank">Eduardo Flores</a> <LinkIcon /></span>
       <button class="mt-4" @click="showHelp = false">Close</button>

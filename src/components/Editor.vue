@@ -1,9 +1,4 @@
 <script setup>
-// Props
-const props = defineProps({
-  range: Object
-});
-
 // Bold, italic, underline or strikethrough a text
 const editText = type => {
   switch (type) {
@@ -25,21 +20,21 @@ const editText = type => {
 // Reselect previously highlighted text
 const reselectText = () => {
   const selection = window.getSelection();
-  selection.removeAllRanges();
-  selection.addRange(props.range);
+  const range = selection.getRangeAt(0);
+  selection.addRange(range);
 }
 </script>
 
 <template>
-  <div @click="getSelection">
+  <div @mouseup="reselectText">
     <!-- Bold -->
-    <button type="button" @click="editText('bold')" @mouseup="reselectText"><b>B</b></button>
+    <button type="button" @click="editText('bold')"><b>B</b></button>
     <!-- Italic -->
-    <button type="button" @click="editText('italic')" @mouseup="reselectText"><i>I</i></button>
+    <button type="button" @click="editText('italic')"><i>I</i></button>
     <!-- Underline -->
-    <button type="button" @click="editText('underline')" @mouseup="reselectText"><u>U</u></button>
+    <button type="button" @click="editText('underline')"><u>U</u></button>
     <!-- Strikethrough -->
-    <button type="button" @click="editText('strike')" @mouseup="reselectText"><s>S</s></button>
+    <button type="button" @click="editText('strike')"><s>S</s></button>
   </div>
 </template>
 

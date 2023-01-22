@@ -1,16 +1,6 @@
 <script setup>
-// Vue API
-import { ref } from 'vue';
-
-// Bottom text editor
+// Components
 import Editor from '../Editor.vue';
-
-// Get range from highlighted text
-let range = ref({});
-const getSelection = () => {
-  const selection = window.getSelection();
-  range.value = selection.getRangeAt(0);
-}
 </script>
 
 <template>
@@ -26,7 +16,7 @@ const getSelection = () => {
       </div>
     </div>
     <!-- Styling -->
-    <Editor :range="range" />
+    <Editor />
   </section>
 </template>
 
