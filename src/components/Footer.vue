@@ -107,7 +107,6 @@ footer {
     padding: 0.5rem 2rem;
 
     &:active {
-      transform: translateY(1px);
       filter: brightness(0.8);
     }
   }

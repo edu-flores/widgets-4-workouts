@@ -119,7 +119,6 @@ b {
     }
 
     &:enabled:active {
-      transform: translateY(1px);
       filter: brightness(0.8);
     }
   }
