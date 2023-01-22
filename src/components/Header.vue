@@ -34,6 +34,14 @@ const saveSettings = () => {
   date.value = new Date(newDate.value);
   showSettings.value = false;
 }
+
+// Validate weight input (min: 0, max: 200)
+const validate = event => {
+  if (event.target.value < 0)
+    newWeight.value = 0;
+  else if (event.target.value > 200)
+    newWeight.value = 200;
+}
 </script>
 
 <template>
@@ -42,7 +50,7 @@ const saveSettings = () => {
       <!-- Personal Weight -->
       <div class="order-2 col-6 col-md-3 text-start">
         <ScaleIcon class="me-2 mb-1" />
-        <span>{{ weight }} kgs</span>
+        <span>{{ parseFloat(weight).toFixed(2) }} kgs</span>
       </div>
       <!-- Date -->
       <div class="order-1 order-md-2 col-12 col-md-6 text-center">
@@ -62,7 +70,7 @@ const saveSettings = () => {
       <form>
         <!-- Weight -->
         <label class="mb-1" for="weight"><b>Weight (kgs):</b></label>
-        <input class="mb-3" id="weight" type="number" min="0" max="200" step="0.1" placeholder="0.00" v-model="newWeight" />
+        <input @input="validate" class="mb-3" id="weight" type="number" min="0" max="200" step="0.1" placeholder="0.00" v-model="newWeight" />
         <!-- Date -->
         <label class="mb-1" for="date"><b>Date:</b></label>
         <input id="date" type="date" v-model="newDate" />
