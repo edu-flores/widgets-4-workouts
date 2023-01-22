@@ -1,20 +1,32 @@
 <script setup>
+// Vue API
+import { ref } from 'vue';
+
 // Bottom text editor
 import Editor from '../Editor.vue';
+
+// Get range from highlighted text
+let range = ref({});
+const getSelection = () => {
+  const selection = window.getSelection();
+  range.value = selection.getRangeAt(0);
+}
 </script>
 
 <template>
-  <section class="h-100">
+  <section class="h-100" @mouseup="getSelection" @keyup="getSelection">
     <!-- Title -->
-    <div class="mb-3">
+    <div class="mb-auto">
       <h6><b>Notes</b></h6>
     </div>
     <!-- Edit Section -->
-    <div class="edit-container">
-      <div contenteditable="true"></div>
+    <div class="edit-container mb-auto">
+      <div contenteditable="true">
+        Have a <i>great</i> workout!
+      </div>
     </div>
     <!-- Styling -->
-    <Editor />
+    <Editor :range="range" />
   </section>
 </template>
 
@@ -26,6 +38,7 @@ section {
 }
 
 .edit-container {
+  width: 100%;
   height: 13rem;
   overflow-y: auto;
   -ms-overflow-style: none;
@@ -38,6 +51,19 @@ section {
   &:focus {
     outline: none;
   }
+}
+
+.bold {
+  font-weight: bold;
+}
+.italic {
+  font-style: italic;
+}
+.underline {
+  text-decoration: underline;
+}
+.strike {
+  text-decoration: line-through;
 }
 
 ::-webkit-scrollbar {

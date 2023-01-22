@@ -18,18 +18,7 @@ import Analysis from './components/widgets/Analysis.vue';
 import Goals from './components/widgets/Goals.vue';
 
 // Exercises for Log component (main data)
-const exercises = ref([
-  {
-    name: 'Bench Press',
-    sets: [
-      {
-        weight: 0,
-        reps: 0,
-        done: false
-      }
-    ]
-  }
-]);
+const exercises = ref([]);
 
 // Push a set to an exercise
 const addSet = exercise => {
@@ -48,6 +37,11 @@ const addExercise = () => {
   exercises.value.push({
     name: 'Exercise #' + String(exercises.value.length + 1),
     sets: [
+      {
+        weight: 0,
+        reps: 0,
+        done: false
+      },
       {
         weight: 0,
         reps: 0,
@@ -126,7 +120,7 @@ const removeExercise = exercise => exercises.value.splice(exercise, 1);
       </div>
     </main>
     <!-- Footer -->
-    <Footer />
+    <Footer :exercises="exercises" />
   </div>
 </template>
 
@@ -138,7 +132,8 @@ const removeExercise = exercise => exercises.value.splice(exercise, 1);
   margin: auto;
 }
 
-.widget {
+.widget {  
+  @include flexbox(column, center, center);
   background-color: white;
   border: 1px solid $lighter;
   border-radius: 6px;

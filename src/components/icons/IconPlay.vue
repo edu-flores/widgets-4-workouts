@@ -9,6 +9,7 @@
 
 svg {
   fill: $dark;
+  width: 18px;
   height: 25px;
 
   &:hover {

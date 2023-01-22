@@ -4,6 +4,7 @@ import { watch, ref } from 'vue';
 
 // Components
 import ExerciseAnalysis from '../ExerciseAnalysis.vue';
+import Empty from '../Empty.vue';
 
 // Donut chart - Volume per exercise
 const donutOptions = ref({
@@ -102,11 +103,11 @@ watch(
 <template>
   <section>
     <!-- Title -->
-    <div class="mb-3">
+    <div class="mb-auto">
       <h6><b>Analysis</b></h6>
     </div>
     <!-- Content -->
-    <div class="container-fluid">
+    <div class="container-fluid mb-auto">
       <div class="row gy-3 align-items-center">
         <!-- Donut Chart -->
         <div class="col-12 col-lg-4 d-flex justify-content-center">
@@ -115,7 +116,7 @@ watch(
         <div class="col-12 col-lg-8">
           <div class="exercises row gy-1 justify-content-center border-start border-end">
             <!-- Exercise Highlights -->
-            <div 
+            <div
               class="col-12 col-sm-6 col-md-4"
               v-for="exercise in exercises" :key="exercise.name"
             >
@@ -127,6 +128,8 @@ watch(
                 :orm="calculateORM(exercise)"
               />
             </div>
+            <!-- No Exercises Yet -->
+            <Empty v-if="exercises.length === 0" message="No data to analyze." height="10rem" />
           </div>
         </div>
       </div>
@@ -136,10 +139,6 @@ watch(
 
 <style lang="scss" scoped>
 @import '../../assets/main.scss';
-
-section {
-  display: grid;
-}
 
 .exercises {
   height: 10rem;

@@ -5,6 +5,9 @@ import DeleteIcon from '../icons/IconDelete.vue';
 import FilledCheckIcon from '../icons/IconFilledCheck.vue';
 import EmptyCheckIcon from '../icons/IconEmptyCheck.vue';
 
+// Components
+import Empty from '../Empty.vue';
+
 // Props
 const props = defineProps({
   exercises: Array
@@ -18,11 +21,11 @@ const emits = defineEmits(['addSet', 'removeSet', 'addExercise', 'removeExercise
   <section>
     <div class="container-overflow">
       <!-- Title -->
-      <div class="mb-3">
+      <div class="text-center mb-auto">
         <h6><b>Log</b></h6>
       </div>
       <!-- Content -->
-      <div class="container-fluid">
+      <div class="container-fluid mb-auto">
         <div :class="index !== 0 ? 'mt-4' : ''" v-for="(exercise, index) in exercises" :key="index">
           <div class="d-flex justify-content-between mb-2">
             <!-- Name -->
@@ -67,6 +70,9 @@ const emits = defineEmits(['addSet', 'removeSet', 'addExercise', 'removeExercise
           <!-- New Set & Exercise -->
           <button v-if="exercise.sets.length < 10" @click="$emit('addSet', index)" type="button" class="add-set w-100">+ Add Set</button>
         </div>
+        <!-- No Exercises Yet -->
+        <Empty v-if="exercises.length === 0" message="There are no exercises yet." height="12rem" />
+        <!-- Add Exercise -->
         <button v-if="exercises.length < 10" @click="$emit('addExercise')" type="button" class="add-exercise w-100">+ Add Exercise</button>
       </div>
     </div>
@@ -77,6 +83,7 @@ const emits = defineEmits(['addSet', 'removeSet', 'addExercise', 'removeExercise
 @import '../../assets/main.scss';
 
 .container-overflow {
+  width: 100%;
   height: 16.5rem;
   overflow-y: auto;
 }
@@ -112,7 +119,6 @@ button {
   font-size: small;
 
   &:active {
-    transform: translateY(1px);
     filter: brightness(0.8);
   }
 }

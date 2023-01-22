@@ -14,7 +14,7 @@ const props = defineProps({
 
 <template>
   <div>
-    <p class="text-center badge bg-secondary">{{ name }}</p>
+    <p class="text-center badge">{{ name }}</p>
     <ul>
       <li><b>Vol</b>: {{ formatNumber(volume) }} lbs</li>
       <li><b>Sets</b>: {{ formatNumber(sets) }}</li>
@@ -28,8 +28,10 @@ const props = defineProps({
 @import '../assets/main.scss';
 
 p {
+  background-color: $darker !important;
+  color: $lighter;
   width: 100%;
-  color: white;
   font-size: medium;
+  font-weight: normal;
 }
 </style>

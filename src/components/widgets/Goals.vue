@@ -9,6 +9,7 @@ import EmptyCheckIcon from '../icons/IconEmptyCheck.vue';
 
 // Components
 import Goal from '../Goal.vue';
+import Empty from '../Empty.vue';
 
 // Data
 const goals = ref([
@@ -92,12 +93,12 @@ watch(
 <template>
   <section>
     <!-- Title -->
-    <div class="mb-4">
+    <div class="mb-auto">
       <h6><b>Goals</b></h6>
     </div>
     <!-- Content -->
-    <div class="container-fluid">
-      <div class="bars row mt-3">
+    <div class="container-fluid mb-auto">
+      <div class="bars row">
         <!-- Progress Bars -->
         <div
           class="col-12 col-sm-6 col-lg-12"
@@ -111,23 +112,23 @@ watch(
             :units="goal.units"
           />
         </div>
+        <!-- No Goals Selected -->
+        <Empty v-if="goals.filter(goal => goal.active).length === 0" message="No goals selected." height="8rem" />
       </div>
     </div>
     <!-- Edit Goals -->
-    <div v-if="!editMode" class="edit mt-5" @click="editMode = true">
+    <div v-if="!editMode" class="edit" @click="editMode = true">
       <EditIcon />
       <span>Edit</span>
     </div>
-    <div class="row gy-1 mt-1" v-else>
+    <div class="row gy-1" v-else>
       <div class="col-6 col-sm-3 col-lg-6" v-for="goal in goals" :key="goal.id">
-        <div>
-          <label class="d-flex me-1">
-            <input type="checkbox" v-model="goal.active" />
-            <div v-if="goal.active"><FilledCheckIcon /></div>
-            <div v-else><EmptyCheckIcon /></div>
-            <span>&nbsp; {{ goal.name }}</span>
-          </label>
-        </div>
+        <label class="d-flex">
+          <input type="checkbox" v-model="goal.active" />
+          <div v-if="goal.active"><FilledCheckIcon /></div>
+          <div v-else><EmptyCheckIcon /></div>
+          <span>&nbsp; {{ goal.name }}</span>
+        </label>
       </div>
       <!-- Done -->
       <button class="mt-3" type="button" @click="editMode = false">✓ Done</button>
@@ -163,7 +164,6 @@ button {
   font-size: small;
 
   &:active {
-    transform: translateY(1px);
     filter: brightness(0.8);
   }
 }
