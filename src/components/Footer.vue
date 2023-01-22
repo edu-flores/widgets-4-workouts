@@ -53,11 +53,11 @@ let showHelp = ref(false);
       <!-- Component cleanup -->
       <div class="col-6 text-end" @click="showReset = true">
         <ResetIcon class="me-2 mb-1" />
-        <span>Reset</span>
+        <span class="cursor">Reset</span>
       </div>
       <!-- Download Results -->
       <div class="col-6 col-sm-4" @click="exportData">
-        <span>Export</span>
+        <span class="cursor">Export</span>
         <ExportIcon class="ms-2 mb-1" />
       </div>
       <!-- Help / About -->
@@ -102,7 +102,7 @@ footer {
   box-shadow: rgba(33, 35, 38, 0.1) 0px 10px 10px -10px;
 }
 
-span {
+.cursor {
   cursor: pointer;
 }
 
