@@ -8,7 +8,7 @@ const props = defineProps({
 const editText = type => {
   switch (type) {
     case 'bold':
-      
+
       break;
     case 'italic':
       
@@ -33,13 +33,13 @@ const reselectText = () => {
 <template>
   <div @click="getSelection">
     <!-- Bold -->
-    <button type="button" @click="editText" @mouseup="reselectText"><b>B</b></button>
+    <button type="button" @click="editText('bold')" @mouseup="reselectText"><b>B</b></button>
     <!-- Italic -->
-    <button type="button" @click="editText" @mouseup="reselectText"><i>I</i></button>
+    <button type="button" @click="editText('italic')" @mouseup="reselectText"><i>I</i></button>
     <!-- Underline -->
-    <button type="button" @click="editText" @mouseup="reselectText"><u>U</u></button>
+    <button type="button" @click="editText('underline')" @mouseup="reselectText"><u>U</u></button>
     <!-- Strikethrough -->
-    <button type="button" @click="editText" @mouseup="reselectText"><s>S</s></button>
+    <button type="button" @click="editText('strike')" @mouseup="reselectText"><s>S</s></button>
   </div>
 </template>
 
@@ -69,18 +69,5 @@ b, i, u, s {
   &:hover {
     cursor: pointer;
   }
-}
-
-.bold {
-  font-weight: bold;
-}
-.italic {
-  font-style: italic;
-}
-.underline {
-  text-decoration: underline;
-}
-.strike {
-  text-decoration: line-through;
 }
 </style>

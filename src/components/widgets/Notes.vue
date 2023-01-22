@@ -8,7 +8,7 @@ import Editor from '../Editor.vue';
 // Get range from highlighted text
 let range = ref({});
 const getSelection = () => {
-  let selection = window.getSelection();
+  const selection = window.getSelection();
   range.value = selection.getRangeAt(0);
 }
 </script>
@@ -48,6 +48,19 @@ section {
   &:focus {
     outline: none;
   }
+}
+
+.bold {
+  font-weight: bold;
+}
+.italic {
+  font-style: italic;
+}
+.underline {
+  text-decoration: underline;
+}
+.strike {
+  text-decoration: line-through;
 }
 
 ::-webkit-scrollbar {

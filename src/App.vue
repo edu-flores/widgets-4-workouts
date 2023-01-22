@@ -18,18 +18,7 @@ import Analysis from './components/widgets/Analysis.vue';
 import Goals from './components/widgets/Goals.vue';
 
 // Exercises for Log component (main data)
-const exercises = ref([
-  {
-    name: 'Bench Press',
-    sets: [
-      {
-        weight: 0,
-        reps: 0,
-        done: false
-      }
-    ]
-  }
-]);
+const exercises = ref([]);
 
 // Push a set to an exercise
 const addSet = exercise => {
