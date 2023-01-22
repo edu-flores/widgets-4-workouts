@@ -21,7 +21,9 @@ const getSelection = () => {
     </div>
     <!-- Edit Section -->
     <div class="edit-container">
-      <div contenteditable="true"></div>
+      <div contenteditable="true">
+        Have a <i>great</i> workout!
+      </div>
     </div>
     <!-- Styling -->
     <Editor :range="range" />

@@ -129,7 +129,7 @@ watch(
               />
             </div>
             <!-- No Exercises Yet -->
-            <Empty v-if="exercises.length === 0" message="There are no exercises yet." height="10rem" />
+            <Empty v-if="exercises.length === 0" message="No data to analyze." height="10rem" />
           </div>
         </div>
       </div>

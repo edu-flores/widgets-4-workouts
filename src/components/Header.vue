@@ -106,7 +106,7 @@ b {
 .settings {
   @include flexbox(column, center, center);
   width: 20rem;
-  height: 16rem;
+  max-width: 70vw;
 
   button {
     margin-top: 0.5rem;

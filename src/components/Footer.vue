@@ -6,6 +6,8 @@ import { ref } from 'vue';
 import ResetIcon from './icons/IconReset.vue';
 import ExportIcon from './icons/IconExport.vue';
 import HelpIcon from './icons/IconHelp.vue';
+import HeartIcon from './icons/IconHeart.vue';
+import LinkIcon from './icons/IconLink.vue';
 
 // Components
 import Modal from './Modal.vue';
@@ -42,6 +44,7 @@ const exportData = () => {
 
 // Data
 let showReset = ref(false);
+let showHelp = ref(false);
 </script>
 
 <template>
@@ -58,19 +61,31 @@ let showReset = ref(false);
         <ExportIcon class="ms-2 mb-1" />
       </div>
       <!-- Help / About -->
-      <div class="col-12 col-sm-2 text-center text-sm-end">
+      <div class="col-12 col-sm-2 text-center text-sm-end" @click="showHelp = true">
         <HelpIcon />
       </div>
     </div>
   </footer>
   <!-- Modals -->
   <Modal v-if="showReset">
+    <!-- Reset Page -->
     <div class="reset text-center">
-      <h5><b>Are you sure you want to <br> reset all the widgets?</b></h5>
+      <h5>Are you sure you want to <br> reset all the widgets?</h5>
       <div class="mt-4">
         <button class="decline me-4" @click="showReset = false">No</button>
         <button class="accept ms-4" @click="reset">Yes</button>
       </div>
+    </div>
+  </Modal>
+  <Modal v-if="showHelp">
+    <!-- Help -->
+    <div class="help">
+      <h5>About</h5>
+      <p>
+        <i><b>Widgets 4 Workouts</b></i> is a training helper that lets you log your daily workouts, while having available useful information about the way you train.
+      </p>
+      <span class="text-center">Made with <HeartIcon /> <br> by <a href="https://edu-flores.github.io/" target="_blank">Eduardo Flores</a> <LinkIcon /></span>
+      <button class="mt-4" @click="showHelp = false">Close</button>
     </div>
   </Modal>
 </template>
@@ -94,7 +109,7 @@ footer {
 .reset {
   @include flexbox(column, center, center);
   width: 20rem;
-  height: 10rem;
+  max-width: 70vw;
 
   h5 {
    color: $darker; 
@@ -114,6 +129,33 @@ footer {
   .accept {
     background-color: $darker;
     color: $lighter;
+  }
+}
+
+.help {
+  @include flexbox(column, center, center);
+  width: 30rem;
+  max-width: 70vw;
+
+  h5 {
+    color: $darker;
+  }
+
+  a {
+    text-decoration: none;
+    font-weight: bold;
+    color: currentColor;
+  }
+
+  button {
+    margin-top: 0.5rem;
+    border: 0;
+    border-radius: 5px;
+    padding: 0.5rem 2rem;
+
+    &:active {
+      filter: brightness(0.8);
+    }
   }
 }
 </style>
