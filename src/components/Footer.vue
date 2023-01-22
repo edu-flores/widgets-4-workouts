@@ -14,7 +14,9 @@ import Modal from './Modal.vue';
 
 // Props
 const props = defineProps({
-  exercises: Array
+  exercises: Array,
+  weight: Number,
+  date: Date
 });
 
 // Reload whole page
@@ -23,7 +25,7 @@ const reset = () => window.location.reload();
 // Export widget data to a file
 const exportData = () => {
   // Save exercises sets and reps
-  let saveFile = '';
+  let saveFile = String('@' + props.weight + ' kg') + ' ' + String(props.date.toISOString().substring(0, 10)) + '\n\n';
   props.exercises.forEach(exercise => {
     saveFile += exercise.name + '\n';
     exercise.sets.forEach(set => {

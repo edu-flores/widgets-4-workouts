@@ -17,8 +17,18 @@ import Notes from './components/widgets/Notes.vue';
 import Analysis from './components/widgets/Analysis.vue';
 import Goals from './components/widgets/Goals.vue';
 
+// Weight and date
+let weight = ref(78.2);
+let date = ref(new Date());
+
+// Update weight and date
+const updateHeader = (newWeight, newDate) => {
+  weight.value = newWeight;
+  date.value = newDate;
+}
+
 // Exercises for Log component (main data)
-const exercises = ref([]);
+let exercises = ref([]);
 
 // Push a set to an exercise
 const addSet = exercise => {
@@ -58,7 +68,11 @@ const removeExercise = exercise => exercises.value.splice(exercise, 1);
 <template>
   <div id="main-container">
     <!-- Header -->
-    <Header />
+    <Header
+      :weight="weight"
+      :date="date"
+      @update-header="updateHeader"
+    />
     <main class="container-fluid py-4 px-0">
       <div class="row gy-4">
         <!-- Statistics -->
@@ -120,7 +134,11 @@ const removeExercise = exercise => exercises.value.splice(exercise, 1);
       </div>
     </main>
     <!-- Footer -->
-    <Footer :exercises="exercises" />
+    <Footer
+      :exercises="exercises"
+      :weight="weight"
+      :date="date"
+    />
   </div>
 </template>
 

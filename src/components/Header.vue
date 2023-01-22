@@ -10,28 +10,34 @@ import SettingsIcon from './icons/IconSettings.vue';
 // Components
 import Modal from './Modal.vue';
 
+// Props
+const props = defineProps({
+  weight: Number,
+  date: Date
+});
+
+// Emits
+const emits = defineEmits(['updateHeader']);
+
 // Date days and months
 const days = ['Sun', 'Mon', 'Tues', 'Wed', 'Thurs', 'Fri', 'Sat'];
 const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 
 // Data
 let showSettings = ref(false);
-let weight = ref(78.2);
-let date = ref(new Date());
 
 // Show modal and set inputs
-let newWeight = ref(weight.value);
-let newDate = ref(date.value.toISOString().substring(0, 10));
+let newWeight = ref(null);
+let newDate = ref(null);
 const openModal = () => {
-  newWeight.value = weight.value;
-  newDate.value = date.value.toISOString().substring(0, 10);
+  newWeight.value = props.weight;
+  newDate.value = props.date.toISOString().substring(0, 10);
   showSettings.value = true;
 }
 
 // Save weight and date from settings
 const saveSettings = () => {
-  weight.value = newWeight.value;
-  date.value = new Date(newDate.value);
+  emits('updateHeader', newWeight.value, new Date(newDate.value));
   showSettings.value = false;
 }
 
@@ -50,7 +56,7 @@ const validate = event => {
       <!-- Personal Weight -->
       <div class="order-2 col-6 col-md-3 text-start">
         <ScaleIcon class="me-2 mb-1" />
-        <span>{{ parseFloat(weight).toFixed(2) }} kgs</span>
+        <span>{{ parseFloat(weight).toFixed(1) }} kgs</span>
       </div>
       <!-- Date -->
       <div class="order-1 order-md-2 col-12 col-md-6 text-center">
