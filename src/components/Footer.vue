@@ -10,8 +10,35 @@ import HelpIcon from './icons/IconHelp.vue';
 // Components
 import Modal from './Modal.vue';
 
+// Props
+const props = defineProps({
+  exercises: Array
+});
+
 // Reload whole page
-const reload = () => window.location.reload();
+const reset = () => window.location.reload();
+
+// Export widget data to a file
+const exportData = () => {
+  // Save exercises sets and reps
+  let saveFile = '';
+  props.exercises.forEach(exercise => {
+    saveFile += exercise.name + '\n';
+    exercise.sets.forEach(set => {
+      if (set.done)
+        saveFile += (set.weight + ' lbs') + (' x ' + set.reps + ' reps') + '\n';
+    });
+    saveFile += '\n';
+  });
+
+  // Download file via anchor
+  const blob = new Blob([saveFile], { type: 'text/plain' });
+  const url = URL.createObjectURL(blob);
+  const anchor = document.createElement('a');
+  anchor.download = `${'Workout'}.txt`;
+  anchor.href = url;
+  anchor.click();
+}
 
 // Data
 let showReset = ref(false);
@@ -26,7 +53,7 @@ let showReset = ref(false);
         <span>Reset</span>
       </div>
       <!-- Download Results -->
-      <div class="col-6 col-sm-4">
+      <div class="col-6 col-sm-4" @click="exportData">
         <span>Export</span>
         <ExportIcon class="ms-2 mb-1" />
       </div>
@@ -42,7 +69,7 @@ let showReset = ref(false);
       <h5><b>Are you sure you want to <br> reset all the widgets?</b></h5>
       <div class="mt-4">
         <button class="me-2" @click="showReset = false">No</button>
-        <button class="ms-2" @click="reload">Yes</button>
+        <button class="ms-2" @click="reset">Yes</button>
       </div>
     </div>
   </Modal>

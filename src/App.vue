@@ -120,7 +120,7 @@ const removeExercise = exercise => exercises.value.splice(exercise, 1);
       </div>
     </main>
     <!-- Footer -->
-    <Footer />
+    <Footer :exercises="exercises" />
   </div>
 </template>
 
