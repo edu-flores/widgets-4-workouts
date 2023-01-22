@@ -68,8 +68,8 @@ let showReset = ref(false);
     <div class="reset text-center">
       <h5><b>Are you sure you want to <br> reset all the widgets?</b></h5>
       <div class="mt-4">
-        <button class="me-2" @click="showReset = false">No</button>
-        <button class="ms-2" @click="reset">Yes</button>
+        <button class="decline me-4" @click="showReset = false">No</button>
+        <button class="accept ms-4" @click="reset">Yes</button>
       </div>
     </div>
   </Modal>
@@ -110,6 +110,11 @@ footer {
       transform: translateY(1px);
       filter: brightness(0.8);
     }
+  }
+
+  .accept {
+    background-color: $darker;
+    color: $lighter;
   }
 }
 </style>
