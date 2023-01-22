@@ -1,6 +1,9 @@
 <script setup>
 // Components
 import Editor from '../Editor.vue';
+
+// Predifined messages
+const notes = ['Light weight... yeah buddy!', 'Ain\'t nuttin\' but a peanut!', 'Have a great workout!', 'Stay hydrated!' , 'Come on, let\'s get big!'];
 </script>
 
 <template>
@@ -12,7 +15,7 @@ import Editor from '../Editor.vue';
     <!-- Edit Section -->
     <div class="edit-container mb-auto">
       <div contenteditable="true">
-        Have a <i>great</i> workout!
+        {{ notes[Math.floor(Math.random() * notes.length)] }}
       </div>
     </div>
     <!-- Styling -->
