@@ -21,6 +21,17 @@ let progressMax = 150;
 watch(
   timer.value,
   () => {
+    // Validate (max: 59)
+    if (String(timer.value.minutes).length > 2)
+      timer.value.minutes = '59';
+    if (String(timer.value.seconds).length > 2)
+      timer.value.seconds = '59';
+    // Validate (min: 00)
+    if (String(timer.value.minutes).includes('-') || !String(timer.value.minutes))
+      timer.value.minutes = '00';
+    if (String(timer.value.seconds).includes('-') || !String(timer.value.seconds))
+      timer.value.seconds = '00';
+
     // Zeroes
     if (String(timer.value.minutes).length === 1)
       timer.value.minutes = '0' + timer.value.minutes;
