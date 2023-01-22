@@ -5,16 +5,25 @@ import { ref } from 'vue';
 // Data
 let n = ref(225);
 
-// Resize input while typing
+// Validate and resize input while typing
 const input = ref(null);
-const resize = () => input.value.style.width = input.value.value.length + 'ch';
+const handleInput = event => {
+  // Validate
+  if (event.target.value < 0 || !event.target.value)
+    n.value = 0;
+  else if (event.target.value > 995)
+    n.value = 995;
+
+  // Resize
+  input.value.style.width = (input.value.value.length || 1) + 'ch';
+}
 </script>
 
 <template>
   <section class="text-center">
     <!-- Main Weight -->
     <p class="mb-0">
-      <b><input class="text-end" @input="resize" ref="input" type="number" min="0" max="995" step="5" v-model="n" /> lbs</b>
+      <b><input class="text-end" @input="handleInput" ref="input" type="number" min="0" max="995" step="5" v-model="n" /> lbs</b>
     </p>
     <!-- Derivations -->
     <div class="container-fluid p-0">
