@@ -24,7 +24,7 @@ const style = computed(() => `background-color: rgba(53, 185, 211, ${props.opaci
 
 <template>
   <div class="d-flex">
-    <div class="icon d-flex me-3" :style="style">
+    <div class="icon d-flex align-items-center justify-content-center rounded-circle me-3" :style="style">
       <component :is="icons[id]"></component>
     </div>
     <div>
@@ -38,11 +38,8 @@ const style = computed(() => `background-color: rgba(53, 185, 211, ${props.opaci
 @import '../assets/main.scss';
 
 .icon {
-  border-radius: 100%;
   width: 3rem;
   height: 3rem;
-  align-items: center;
-  justify-content: center;
 }
 
 b {
