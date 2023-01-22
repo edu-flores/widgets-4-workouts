@@ -8,16 +8,16 @@ const props = defineProps({
 const editText = type => {
   switch (type) {
     case 'bold':
-
+      document.execCommand('bold', false);
       break;
     case 'italic':
-      
+      document.execCommand('italic', false);
       break;
     case 'underline':
-      
+      document.execCommand('underline', false);
       break;
     case 'strike':
-      
+      document.execCommand('strikethrough', false);
       break;
   }
 }

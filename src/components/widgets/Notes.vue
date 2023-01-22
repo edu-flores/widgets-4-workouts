@@ -38,6 +38,7 @@ section {
 }
 
 .edit-container {
+  width: 100%;
   height: 13rem;
   overflow-y: auto;
   -ms-overflow-style: none;
