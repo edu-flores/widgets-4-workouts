@@ -15,6 +15,25 @@ const props = defineProps({
 
 // Events
 const emits = defineEmits(['addSet', 'removeSet', 'addExercise', 'removeExercise']);
+
+// Validate weight and reps
+const validate = (event, type, exercise, set) => {
+  event.preventDefault();
+  switch (type) {
+    case 'weight':
+      if (event.target.value > 995)
+        props.exercises[exercise].sets[set].weight = 995;
+      else if (event.target.value < 0 || !event.target.value)
+        props.exercises[exercise].sets[set].weight = 0;
+      break;
+    case 'rep':
+      if (event.target.value > 20)
+        props.exercises[exercise].sets[set].reps = 20;
+      else if (event.target.value < 0 || !event.target.value)
+        props.exercises[exercise].sets[set].reps = 0;
+      break;
+  }
+}
 </script>
 
 <template>
@@ -48,11 +67,11 @@ const emits = defineEmits(['addSet', 'removeSet', 'addExercise', 'removeExercise
               <tr v-for="(set, i) in exercise.sets" :key="i">
                 <td class="w-25">{{ i+1 }}</td>
                 <td class="w-25">
-                  <input class="set-input text-end" type="number" min="5" max="995" step="5" v-model="set.weight" />
+                  <input class="set-input text-end" @input="validate($event, 'weight', index, i)" type="number" min="0" max="995" step="5" v-model="set.weight" />
                   <span>&nbsp;lbs</span>
                 </td>
                 <td class="w-25">
-                  <input class="set-input" type="number" min="1" max="20" v-model="set.reps" />
+                  <input class="set-input" @input="validate($event, 'rep', index, i)" type="number" min="0" max="20" v-model="set.reps" />
                 </td>
                 <td class="d-flex justify-content-center m-auto w-25">
                   <label class="me-1">
