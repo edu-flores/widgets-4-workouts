@@ -1,35 +1,56 @@
-# widgets-4-workouts
+<br>
+<div align="center">
+    <img width="50" src="./public/favicon.ico" alt="Logo">
+    <h1>Widgets 4 Workouts</h1>
+    <h3>Training Helper</h3>
+</div>
+<br>
 
-This template should help get you started developing with Vue 3 in Vite.
+## 📒 Installation
+To run locally:
 
-## Recommended IDE Setup
+1. Install dependencies with `npm install`
+2. Start server with `npm run dev`
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+Online version: [Click](https://edu-flores.github.io/projects/w4w/dist/index.html)
 
-## Customize configuration
+<br>
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+## 📷 Overview
 
-## Project Setup
+Several helpful widgets that aid your daily workouts. These widgets adapt to any screen and provide you very useful information about the way you train.
 
-```sh
-npm install
-```
+<br>
 
-### Compile and Hot-Reload for Development
+## 🦾 Features
 
-```sh
-npm run dev
-```
+* Statistics (Total Volume, Repetitions, Exercises and 1RM)
+* Barbell Plate Calculator
+* Spotify integration
+* Warmup & Dropset Calculator
+* Timer
+* Exercise log
+* Notes
+* Volume analyisis
+* Goals
+* Daily workout export
 
-### Compile and Minify for Production
+<br>
 
-```sh
-npm run build
-```
+## 💻 Usage
 
-### Lint with [ESLint](https://eslint.org/)
+Log your sets and reps into the Log widget. This will update your statistics, analysis and goals widgets.
 
-```sh
-npm run lint
-```
+To calculate how many plates you need to reach a specific weight on an olympic barbell (45 lbs), use the plate calculator widget.
+
+Similarly, to calculate the 40%, 60% and 80% of a specific weight for warmup and/or dropset puroposes use the other calculator widget.
+
+To track your rest between sets, you can tweak the given timer (max of 59 mins and 59 seconds) to your liking.
+
+<br>
+
+## ✍️ Design
+
+Initial Figma design: [Click](https://www.figma.com/file/UEas8z3y1EDz8s8EHoEV4c/Widgets-4-Workouts?node-id=0%3A1&t=aMvxPbF7AH3Oa9JJ-1)
+
+![W4W Demo](./src/assets/Demo.gif)
