@@ -18,7 +18,7 @@ Online version: [Click](https://edu-flores.github.io/projects/w4w/dist/index.htm
 
 ## 📷 Overview
 
-Several helpful widgets that aid your daily workouts. These widgets adapt to any screen and provide you very useful information about the way you train.
+Several helpful widgets that serve as an aid for your daily workouts. These widgets adapt to any screen and provide very useful information about the way you train.
 
 <br>
 
@@ -43,7 +43,7 @@ Log your sets and reps into the Log widget. This will update your statistics, an
 
 To calculate how many plates you need to reach a specific weight on an olympic barbell (45 lbs), use the plate calculator widget.
 
-Similarly, to calculate the 40%, 60% and 80% of a specific weight for warmup and/or dropset puroposes use the other calculator widget.
+Similarly, to calculate the 40%, 60% and 80% of a specific weight for warmup and/or dropset purposes use the other calculator widget.
 
 To track your rest between sets, you can tweak the given timer (max of 59 mins and 59 seconds) to your liking.
 
