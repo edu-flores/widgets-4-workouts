@@ -9,7 +9,7 @@ let n = ref(225);
 const input = ref(null);
 const handleInput = event => {
   // Validate
-  if (event.target.value < 0 || !event.target.value)
+  if (event.target.value < 0)
     n.value = 0;
   else if (event.target.value > 995)
     n.value = 995;
@@ -23,7 +23,7 @@ const handleInput = event => {
   <section class="text-center">
     <!-- Main Weight -->
     <p class="mb-0">
-      <b><input class="text-end" @input="handleInput" ref="input" type="number" min="0" max="995" step="5" v-model="n" /> lbs</b>
+      <b><input class="text-end" @input="handleInput" ref="input" type="number" min="0" max="995" step="5" placeholder="0" v-model="n" /> lbs</b>
     </p>
     <!-- Derivations -->
     <div class="container-fluid p-0">

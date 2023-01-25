@@ -12,7 +12,7 @@ let n = ref(185);
 const input = ref(null);
 const handleInput = event => {
   // Validate
-  if (event.target.value < 0 || !event.target.value)
+  if (event.target.value < 0)
     n.value = 0;
   else if (event.target.value > 995)
     n.value = 995;
@@ -68,7 +68,7 @@ const calculatePlates = goalWeight => {
         <!-- Text -->
         <div class="col-12 col-sm-6 col-md-12 col-lg-6 text-center">
           <p class="mb-0">
-            <b><input class="text-end" @input="handleInput" ref="input" type="number" min="0" max="995" step="5" v-model="n" /> lbs</b>
+            <b><input class="text-end" @input="handleInput" ref="input" type="number" min="0" max="995" step="5" placeholder="0" v-model="n" /> lbs</b>
           </p>
           <span>{{ calculatePlates(n).reduce((a, b) => a + b, 0) }} lbs per side</span>
         </div>
