@@ -53,7 +53,7 @@ const props = defineProps({
 // Calculations
 const calculateVolume = exercise => {  // Vol
   return exercise.sets.reduce((volume, set) => {
-    return volume + (set.done ? set.weight * set.reps : 0);
+    return volume + (set.done ? (set.weight || 0) * (set.reps || 0) : 0);
   }, 0);
 }
 const calculateSets = exercise => {  // Sets
@@ -63,12 +63,12 @@ const calculateSets = exercise => {  // Sets
 }
 const calculateReps = exercise => {  // Reps
   return exercise.sets.reduce((reps, set) => {
-    return reps + (set.done ? set.reps : 0);
+    return reps + (set.done ? (set.reps || 0) : 0);
   }, 0);
 }
 const calculateORM = exercise => {  // 1RM
   return parseInt(Math.max.call(Math, ...exercise.sets.map(set => {
-    return (set.done ? set.weight / (1.0278 - 0.0278 * set.reps) : 0);
+    return (set.done ? (set.weight || 0) / (1.0278 - 0.0278 * (set.reps || 0)) : 0);
   })));
 }
 

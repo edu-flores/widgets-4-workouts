@@ -33,8 +33,8 @@ let exercises = ref([]);
 // Push a set to an exercise
 const addSet = exercise => {
   exercises.value[exercise].sets.push({
-    weight: 0,
-    reps: 0,
+    weight: '',
+    reps: '',
     done: false
   });
 }
@@ -48,13 +48,13 @@ const addExercise = () => {
     name: 'Exercise #' + String(exercises.value.length + 1),
     sets: [
       {
-        weight: 0,
-        reps: 0,
+        weight: '',
+        reps: '',
         done: false
       },
       {
-        weight: 0,
-        reps: 0,
+        weight: '',
+        reps: '',
         done: false
       }
     ]

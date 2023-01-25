@@ -60,7 +60,7 @@ watch(
     // Volume
     const totalVolume = props.exercises.reduce((totalVolume, exercise) => {
       const exerciseVolume = exercise.sets.reduce((volume, set) => {
-          return volume + (set.done ? set.weight * set.reps : 0);
+          return volume + (set.done ? (set.weight || 0) * (set.reps || 0) : 0);
       }, 0);
       return totalVolume + exerciseVolume;
     }, 0);
@@ -78,7 +78,7 @@ watch(
     // Reps
     const totalReps = props.exercises.reduce((totalReps, exercise) => {
       const exerciseReps = exercise.sets.reduce((reps, set) => {
-        return reps + (set.done ? set.reps : 0);
+        return reps + (set.done ? (set.reps || 0) : 0);
       }, 0);
       return totalReps + exerciseReps;
     }, 0);
