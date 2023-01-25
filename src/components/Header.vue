@@ -73,7 +73,7 @@ const validate = event => {
   <!-- Modals -->
   <Modal v-if="showSettings">
     <div class="settings text-center">
-      <form>
+      <form class="w-100">
         <!-- Weight -->
         <label class="mb-1" for="weight"><b>Weight (kgs):</b></label>
         <input @input="validate" class="mb-3" id="weight" type="number" min="0" max="200" step="0.1" placeholder="0.00" v-model="newWeight" />
@@ -105,12 +105,18 @@ header {
   cursor: pointer;
 }
 
+form {
+  @include flexbox(column, center, center);
+}
+
 input {
-  all: unset;
+  text-align: center;
+  color: currentColor;
   border: 1px solid $light;
   border-radius: 6px;
   padding: 0.5rem;
   width: 85%;
+  outline: none;
 }
 
 .row {
