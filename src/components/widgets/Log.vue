@@ -74,7 +74,7 @@ const validate = (event, type, exercise, set) => {
                   <input class="set-input" @input="validate($event, 'rep', index, i)" type="number" min="0" max="20" placeholder="0" v-model="set.reps" />
                 </td>
                 <td class="d-flex justify-content-center m-auto w-25">
-                  <label class="me-1">
+                  <label class="d-flex me-1">
                     <input type="checkbox" v-model="set.done" />
                     <div v-if="set.done"><FilledCheckIcon /></div>
                     <div v-else><EmptyCheckIcon /></div>
